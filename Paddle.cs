@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pong_NEM
 {
-    public class Paddle
+    public abstract class Paddle
     {
         // Class Variables
         protected const int PADDLEWIDTH = 20;
@@ -15,6 +15,9 @@ namespace Pong_NEM
         protected Graphics graphics;
         protected Rectangle formRectangle;
         protected int paddlePositionY, paddleSize, paddleSide;
+
+        //public abstract int PaddlePositionY { get; set; }
+
         // Class Constructor
         public Paddle(Graphics graphics, Rectangle formRectangle)
         {
@@ -23,10 +26,7 @@ namespace Pong_NEM
             paddleSize = 100;
         }
 
-        public virtual void DrawPaddle()
-        {
-            graphics.FillRectangle(brush, paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize);
-        }
+        public abstract void MovePaddle();
 
 
         public void PaddleYUp()

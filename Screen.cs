@@ -15,17 +15,18 @@ namespace Pong_NEM
         private Graphics graphics;
         private Rectangle formRectangle;
         private Ball ball;
-        private Paddle playerPaddle;
+        private Paddle playerPaddle, cpuPaddle;
         //private BufferedGraphicsContext bufferedGraphicsContext;
         
 
         // Class Constructor
-        public Screen(Graphics graphics, Rectangle formRectangle, Ball ball, Paddle paddle)
+        public Screen(Graphics graphics, Rectangle formRectangle, Ball ball, Paddle playerPaddle, Paddle cpuPaddle)
         {
             this.graphics = graphics;
             this.formRectangle = formRectangle;
             this.ball = ball;
-            this.playerPaddle = paddle;
+            this.playerPaddle = playerPaddle;
+            this.cpuPaddle = cpuPaddle;
 
             //bufferedGraphicsContext = new BufferedGraphicsContext();
             
@@ -42,7 +43,8 @@ namespace Pong_NEM
 
             graphics.FillEllipse(Brushes.Red, ball.BallPositionX, ball.BallPositionY, ball.BallSize, ball.BallSize); // Testing Code
 
-            playerPaddle.DrawPaddle();
+            playerPaddle.MovePaddle();
+            cpuPaddle.MovePaddle();
         }
     }
 }

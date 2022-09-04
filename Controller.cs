@@ -12,7 +12,7 @@ namespace Pong_NEM
     {
         // Class Variables
         private Ball ball;
-        private PlayerPaddle playerPaddle;
+        private Paddle playerPaddle, cpuPaddle;
         private Screen screen;
 
         private Graphics graphics;
@@ -28,9 +28,9 @@ namespace Pong_NEM
 
             ball = new Ball(ballStartX, ballStartY, random, formRectangle, graphics, formRectangle);
             playerPaddle = new PlayerPaddle(graphics, formRectangle);
-            screen = new Screen(graphics, formRectangle, ball, playerPaddle);
-            
-            
+            cpuPaddle = new CpuPaddle(graphics, formRectangle);
+            cpuPaddle = new CpuPaddle(graphics, formRectangle);
+            screen = new Screen(graphics, formRectangle, ball, playerPaddle, cpuPaddle);
         }
 
         // This will be called by the timer
