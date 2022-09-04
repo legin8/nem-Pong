@@ -11,22 +11,23 @@ namespace Pong_NEM
     public class Ball
     {
         // Class Variables
+        // Constants
         private const int BALLSIZE = 20, XYORIGIN = 0;
 
+        // Holds References
         private Graphics graphics;
         private Rectangle formRectangle;
 
+        // This class variables
         private int ballSpeedX, ballSpeedY; // Ball position and speed
         private bool ballXGoUp = true, ballYGoUp = true;
-
-        private bool isDead;
-        //private int ballPositionX, ballPositionY;
-
-
+        private int ballPositionX, ballPositionY;
+        
+        // Gets and Sets
         public int BallSize { get => BALLSIZE; }
-        public int BallPositionX { get; set; }
-        public int BallPositionY { get; set; }
-        public bool IsDead { get => isDead; set => isDead = value; }
+        public int BallPositionX { get => ballPositionX; set => ballPositionX = value; }
+        public int BallPositionY { get => ballPositionY; set => ballPositionY = value; }
+        
 
 
         // Class Constructor
@@ -39,72 +40,77 @@ namespace Pong_NEM
             BallPositionY = ballPositionY;
             ballSpeedX = 20;
             ballSpeedY = 20;
-            isDead = false;
             this.formRectangle = formRectangle;
         }
 
-        // This will call Methods in ball Class to move Ball
+        // This will call Methods in ball Class to check and move Ball
         public void UpdateBall()
         {
-            CheckBallLocation();
-
             MoveBall();
 
             
-
-            // graphics.FillEllipse(Brushes.Red, ballPositionX, ballPositionY, BALLSIZE, BALLSIZE); // Testing Code
+            
+            SideBounce();
         }
 
         // This will check to see if Ball needs to change direction
         private void CheckBallLocation()
         {
             // This won't be needed, X axis
-            if (BallPositionX >= formRectangle.Width - (BALLSIZE *2))
-            {
-                ballXGoUp = !ballXGoUp;
-                Console.WriteLine(BallPositionX + " 1x" + BallPositionY);
-                //isDead = true;
-                ResetBall();
-                //Console.WriteLine(ballPositionX + " 2" + ballPositionY);
-
-                //ballPositionX -= BALLSIZE; Test Code for Bounce
-            }
-
-
-            if (BallPositionX <= XYORIGIN)
-            {
-                ballXGoUp = !ballXGoUp;
-                Console.WriteLine(BallPositionX + " 1y" + BallPositionY);
-                
-                ResetBall();
-                //Console.WriteLine(ballPositionX + " 2y" + ballPositionY);
-
-                //ballPositionX = originOfScreen; Test Code for Bounce
-            }
+            if (ballPositionX >= formRectangle.Width - (BALLSIZE * 2)) ballXGoUp = !ballXGoUp;
+            if (ballPositionX <= XYORIGIN) ballXGoUp = !ballXGoUp;
 
 
             // This above won't be needed, X axis
-
-            if (BallPositionY >= formRectangle.Height - (BALLSIZE * 2)) ballYGoUp = !ballYGoUp;
-            if (BallPositionY <= XYORIGIN) ballYGoUp = !ballYGoUp;
-
+            if (ballPositionY >= formRectangle.Height - (BALLSIZE * 2)) ballYGoUp = !ballYGoUp;
+            if (ballPositionY <= XYORIGIN) ballYGoUp = !ballYGoUp;
         }
 
         // This Moves the Ball under perfect conditions
         private void MoveBall()
         {
+            // X axis
             if (ballXGoUp) BallPositionX += ballSpeedX;
             if (!ballXGoUp) BallPositionX -= ballSpeedX;
 
+            // Y axis
             if (ballYGoUp) BallPositionY += ballSpeedY;
             if (!ballYGoUp) BallPositionY -= ballSpeedY;
+        }
+
+        // This will set the correct position of the ball for the bounce.
+        private void SideBounce()
+        {
+            if (ballPositionX >= formRectangle.Width - BALLSIZE)
+            {
+                ballXGoUp = !ballXGoUp;
+                ballPositionX = formRectangle.Width - BALLSIZE;
+            }
+
+            if (ballPositionX <= XYORIGIN)
+            {
+                ballXGoUp = !ballXGoUp;
+                ballPositionX = XYORIGIN;
+            }
+
+            if (ballPositionY >= formRectangle.Height - BALLSIZE)
+            {
+                ballYGoUp = !ballYGoUp;
+                ballPositionY = formRectangle.Height - BALLSIZE;
+            }
+
+            if (ballPositionY <= XYORIGIN)
+            {
+                ballYGoUp = !ballYGoUp;
+                ballPositionY = XYORIGIN;
+            }
         }
 
        
         public void ResetBall()
         {
-            BallPositionX = 300;
-            BallPositionY = 600;
+            ballPositionX = 300;
+            ballPositionY = 600;
             Console.WriteLine(BallPositionX);
             Console.WriteLine(BallPositionY);
 

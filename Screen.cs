@@ -35,8 +35,10 @@ namespace Pong_NEM
         // Test
         public void DisplayScreen()
         {
-            graphics.Clear(Control.DefaultBackColor);
+            
             ball.UpdateBall();
+
+            graphics.Clear(Control.DefaultBackColor);
 
             graphics.FillEllipse(Brushes.Red, ball.BallPositionX, ball.BallPositionY, ball.BallSize, ball.BallSize); // Testing Code
 
