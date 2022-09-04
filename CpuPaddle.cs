@@ -9,18 +9,18 @@ namespace Pong_NEM
 {
     public class CpuPaddle : Paddle
     {
+
         // Class Constructor
         public CpuPaddle(Graphics graphics, Rectangle formRectangle) : base(graphics, formRectangle)
         {
-            paddleSide = formRectangle.Right - PADDLEWIDTH;
+            paddleSideX = formRectangle.Right - PADDLEWIDTH;
             paddlePositionY = 200;
             brush = Brushes.Tomato;
         }
 
-        public override void MovePaddle()
-        {
-            graphics.FillRectangle(brush, paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize); // Testing Code
-        }
+        
+        
+        
 
     }
 }

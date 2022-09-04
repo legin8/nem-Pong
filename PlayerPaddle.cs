@@ -14,15 +14,13 @@ namespace Pong_NEM
         // Class Constructor for child class
         public PlayerPaddle(Graphics graphics, Rectangle formRectangle) : base(graphics, formRectangle)
         {
-            paddleSide = 0;
+            paddleSideX = 0;
             paddlePositionY = 200;
             brush = Brushes.Tomato;
         }
 
-        public override void MovePaddle()
-        {
-            graphics.FillRectangle(brush, paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize); // Testing code
-        }
-
+        
+        
+        
     }
 }

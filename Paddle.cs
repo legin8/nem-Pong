@@ -11,28 +11,37 @@ namespace Pong_NEM
     {
         // Class Variables
         protected const int PADDLEWIDTH = 20;
+
         protected Brush brush;
         protected Graphics graphics;
         protected Rectangle formRectangle;
-        protected int paddlePositionY, paddleSize, paddleSide;
+        protected int paddlePositionY, paddleSize, paddleSideX;
 
-        //public abstract int PaddlePositionY { get; set; }
+        public int PaddlePositionY { get => paddlePositionY; }
+        public int PaddleSize { get => paddleSize; }
+        public int PaddleSideX { get => paddleSideX; }
+        public int PaddleWidth { get => PADDLEWIDTH; }
+
 
         // Class Constructor
         public Paddle(Graphics graphics, Rectangle formRectangle)
         {
             this.graphics = graphics;
             this.formRectangle = formRectangle;
-            paddleSize = 100;
+            paddleSideX = 100;
         }
 
-        public abstract void MovePaddle();
+        public void MovePaddle()
+        {
+            graphics.FillRectangle(brush, paddleSideX, paddlePositionY, PADDLEWIDTH, paddleSize); // Testing code
+        }
+
 
 
         public void PaddleYUp()
         {
-            if (paddlePositionY > 0) paddlePositionY -= 10;
-            if (paddlePositionY < 0) paddlePositionY = formRectangle.Top;
+            if (paddlePositionY > formRectangle.Top) paddlePositionY -= 10;
+            if (paddlePositionY < formRectangle.Top) paddlePositionY = formRectangle.Top;
         }
 
         public void PaddleYDown()
