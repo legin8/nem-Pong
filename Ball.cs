@@ -12,7 +12,7 @@ namespace Pong_NEM
     {
         // Class Variables
         // Constants
-        private const int BALLSIZE = 20, XYORIGIN = 0;
+        private const int BALLSIZE = 20;
 
         // Holds References
         private Graphics graphics;
@@ -20,7 +20,7 @@ namespace Pong_NEM
 
         // This class variables
         private int ballSpeedX, ballSpeedY; // Ball position and speed
-        private bool ballXGoUp = true, ballYGoUp = true;
+        private bool ballXGoUp = true, ballYGoUp = true, isReset = false;
         private int ballPositionX, ballPositionY;
         
         // Gets and Sets
@@ -36,8 +36,8 @@ namespace Pong_NEM
             this.graphics = graphics;
 
             // Ball positions and speed
-            BallPositionX = ballPositionX;
-            BallPositionY = ballPositionY;
+            this.ballPositionX = ballPositionX;
+            this.ballPositionY = ballPositionY;
             ballSpeedX = 20;
             ballSpeedY = 20;
             this.formRectangle = formRectangle;
@@ -46,50 +46,58 @@ namespace Pong_NEM
         // This will call Methods in ball Class to check and move Ball
         public void UpdateBall()
         {
-            MoveBall();
-            SideBounce();
+            if (isReset)
+            {
+                ResetBall();
+            } else
+            {
+                MoveBall();
+                SideBounce();
+            }
         }
 
         // This Moves the Ball under perfect conditions
         private void MoveBall()
         {
             // X axis
-            if (ballXGoUp) BallPositionX += ballSpeedX;
-            if (!ballXGoUp) BallPositionX -= ballSpeedX;
+            if (ballXGoUp) ballPositionX += ballSpeedX;
+            if (!ballXGoUp) ballPositionX -= ballSpeedX;
 
             // Y axis
-            if (ballYGoUp) BallPositionY += ballSpeedY;
-            if (!ballYGoUp) BallPositionY -= ballSpeedY;
+            if (ballYGoUp) ballPositionY += ballSpeedY;
+            if (!ballYGoUp) ballPositionY -= ballSpeedY;
         }
 
         // This will set the correct position of the ball for the bounce.
         private void SideBounce()
         {
-            if (ballPositionX >= formRectangle.Width - BALLSIZE)
+            // Left and Right
+            if (ballPositionX >= formRectangle.Right - BALLSIZE)
             {
                 ballXGoUp = !ballXGoUp;
-                ballPositionX = formRectangle.Width - BALLSIZE;
-                Console.Beep(2000, 200);
+                ballPositionX = formRectangle.Right - BALLSIZE;
+                isReset = !isReset;
             }
 
-            if (ballPositionX <= XYORIGIN)
+            if (ballPositionX <= formRectangle.Left)
             {
                 ballXGoUp = !ballXGoUp;
-                ballPositionX = XYORIGIN;
-                Console.Beep(2000, 200);
+                ballPositionX = formRectangle.Left;
+                isReset = !isReset;
             }
 
-            if (ballPositionY >= formRectangle.Height - BALLSIZE)
+            // Top and Bottom
+            if (ballPositionY >= formRectangle.Bottom - BALLSIZE)
             {
                 ballYGoUp = !ballYGoUp;
-                ballPositionY = formRectangle.Height - BALLSIZE;
+                ballPositionY = formRectangle.Bottom - BALLSIZE;
                 Console.Beep();
             }
 
-            if (ballPositionY <= XYORIGIN)
+            if (ballPositionY <= formRectangle.Top - BALLSIZE)
             {
                 ballYGoUp = !ballYGoUp;
-                ballPositionY = XYORIGIN;
+                ballPositionY = formRectangle.Top - BALLSIZE;
                 Console.Beep();
             }
         }
@@ -97,11 +105,10 @@ namespace Pong_NEM
        
         public void ResetBall()
         {
-            ballPositionX = 300;
-            ballPositionY = 600;
-            Console.WriteLine(BallPositionX);
-            Console.WriteLine(BallPositionY);
-
+            ballPositionX = formRectangle.Width / 2;
+            ballPositionY = formRectangle.Height /2;
+            isReset = !isReset;
+            Console.Beep(2000, 200);
         }
 
     }
