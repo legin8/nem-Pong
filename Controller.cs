@@ -17,42 +17,27 @@ namespace Pong_NEM
 
         private Graphics graphics;
 
-        private int ballStartX = 600, ballStartY = 300;
-        // private bool ballIsInPlay = true; // Testing code
-
-        private bool isOver;
-
-        public bool IsOver { get => isOver; set => isOver = value; }
+        private int ballStartX, ballStartY;
 
         // Class Constructor
-        public Controller(Graphics graphics, Random random, Rectangle clientRectangle)
+        public Controller(Graphics graphics, Random random, Rectangle formRectangle)
         {
-            screen = new Screen(graphics, clientRectangle);
+            ballStartX = formRectangle.Width / 2;
+            ballStartY = formRectangle.Height / 2;
             this.graphics = graphics;
-            ball = new Ball(ballStartX, ballStartY, random, clientRectangle);
-            this.playerPaddle = new PlayerPaddle(graphics, clientRectangle);
-            isOver = false;
+
+            ball = new Ball(ballStartX, ballStartY, random, formRectangle, graphics, formRectangle);
+            playerPaddle = new PlayerPaddle(graphics, formRectangle);
+            screen = new Screen(graphics, formRectangle, ball, playerPaddle);
+            
+            
         }
 
         // This will be called by the timer
         // Will move the balls
         public void RunGame()
         {
-            /*
-            if (!ballIsInPlay)
-            {
-                ball.ResetBall(ref ballIsInPlay);
-            }
-            */
-
-
-            if (ball.IsDead)
-            {
-                isOver = true;
-                
-            }
-
-            screen.DisplayScreen(ball, playerPaddle);
+            screen.DisplayScreen();
         }
 
         public void MovePaddleUp()

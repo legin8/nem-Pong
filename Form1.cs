@@ -41,17 +41,9 @@ namespace Pong_NEM
         // Event handler for timer
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
-            if (controller.IsOver)
-            {
-                Console.WriteLine(e.ToString());
-                timer1.Enabled = false;
-            }
-            else
-            {
-                controller.RunGame();
-            }
-      
+
+            controller.RunGame();
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
