@@ -40,6 +40,9 @@ namespace Pong_NEM
             screen.DisplayScreen();
         }
 
+
+
+
         public void MovePaddleUp()
         {
             playerPaddle.PaddleYUp();

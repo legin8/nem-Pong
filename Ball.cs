@@ -47,23 +47,7 @@ namespace Pong_NEM
         public void UpdateBall()
         {
             MoveBall();
-
-            
-            
             SideBounce();
-        }
-
-        // This will check to see if Ball needs to change direction
-        private void CheckBallLocation()
-        {
-            // This won't be needed, X axis
-            if (ballPositionX >= formRectangle.Width - (BALLSIZE * 2)) ballXGoUp = !ballXGoUp;
-            if (ballPositionX <= XYORIGIN) ballXGoUp = !ballXGoUp;
-
-
-            // This above won't be needed, X axis
-            if (ballPositionY >= formRectangle.Height - (BALLSIZE * 2)) ballYGoUp = !ballYGoUp;
-            if (ballPositionY <= XYORIGIN) ballYGoUp = !ballYGoUp;
         }
 
         // This Moves the Ball under perfect conditions
@@ -85,24 +69,28 @@ namespace Pong_NEM
             {
                 ballXGoUp = !ballXGoUp;
                 ballPositionX = formRectangle.Width - BALLSIZE;
+                Console.Beep(2000, 200);
             }
 
             if (ballPositionX <= XYORIGIN)
             {
                 ballXGoUp = !ballXGoUp;
                 ballPositionX = XYORIGIN;
+                Console.Beep(2000, 200);
             }
 
             if (ballPositionY >= formRectangle.Height - BALLSIZE)
             {
                 ballYGoUp = !ballYGoUp;
                 ballPositionY = formRectangle.Height - BALLSIZE;
+                Console.Beep();
             }
 
             if (ballPositionY <= XYORIGIN)
             {
                 ballYGoUp = !ballYGoUp;
                 ballPositionY = XYORIGIN;
+                Console.Beep();
             }
         }
 
