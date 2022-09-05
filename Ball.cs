@@ -15,8 +15,8 @@ namespace Pong_NEM
         private const int BALLSIZE = 20;
 
         // Holds References
-        private Graphics graphics;
         private Rectangle formRectangle;
+        private Brush brush;
 
         // This class variables
         private int ballSpeedX, ballSpeedY; // Ball position and speed
@@ -24,23 +24,23 @@ namespace Pong_NEM
         private int ballPositionX, ballPositionY;
         
         // Gets and Sets
-        public int BallSize { get => BALLSIZE; }
-        public int BallPositionX { get => ballPositionX; set => ballPositionX = value; }
-        public int BallPositionY { get => ballPositionY; set => ballPositionY = value; }
-        
-
+        public Brush GetBrush { get => brush; }
 
         // Class Constructor
         public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, Graphics graphics, Rectangle formRectangle)
         {
-            this.graphics = graphics;
-
-            // Ball positions and speed
             this.ballPositionX = ballPositionX;
             this.ballPositionY = ballPositionY;
             ballSpeedX = 20;
             ballSpeedY = 20;
             this.formRectangle = formRectangle;
+            brush = Brushes.Black;
+        }
+
+        // This will Return the current Rectangle for the ball
+        public Rectangle GetBall()
+        {
+            return new Rectangle(ballPositionX, ballPositionY, BALLSIZE, BALLSIZE);
         }
 
         // This will call Methods in ball Class to check and move Ball

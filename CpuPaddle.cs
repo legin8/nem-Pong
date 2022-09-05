@@ -9,6 +9,7 @@ namespace Pong_NEM
 {
     public class CpuPaddle : Paddle
     {
+
         // Class Constructor
         public CpuPaddle(Graphics graphics, Rectangle formRectangle) : base(graphics, formRectangle)
         {
@@ -17,10 +18,7 @@ namespace Pong_NEM
             brush = Brushes.Tomato;
         }
 
-        public override void MovePaddle()
-        {
-            graphics.FillRectangle(brush, paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize); // Testing Code
-        }
+        
 
     }
 }

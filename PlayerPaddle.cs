@@ -19,10 +19,7 @@ namespace Pong_NEM
             brush = Brushes.Tomato;
         }
 
-        public override void MovePaddle()
-        {
-            graphics.FillRectangle(brush, paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize); // Testing code
-        }
+        
 
     }
 }

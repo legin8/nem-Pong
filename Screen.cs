@@ -36,15 +36,14 @@ namespace Pong_NEM
         // Test
         public void DisplayScreen()
         {
-            
             ball.UpdateBall();
 
             graphics.Clear(Control.DefaultBackColor);
 
-            graphics.FillEllipse(Brushes.Red, ball.BallPositionX, ball.BallPositionY, ball.BallSize, ball.BallSize); // Testing Code
-
-            playerPaddle.MovePaddle();
-            cpuPaddle.MovePaddle();
+            graphics.FillEllipse(ball.GetBrush, ball.GetBall()); // Ball
+            graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddle()); // Player Paddle
+            graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddle()); // Cpu Paddle
+            
         }
     }
 }

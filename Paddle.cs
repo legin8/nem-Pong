@@ -16,7 +16,7 @@ namespace Pong_NEM
         protected Rectangle formRectangle;
         protected int paddlePositionY, paddleSize, paddleSide;
 
-        //public abstract int PaddlePositionY { get; set; }
+        public Brush GetBrush { get => brush; }
 
         // Class Constructor
         public Paddle(Graphics graphics, Rectangle formRectangle)
@@ -26,7 +26,10 @@ namespace Pong_NEM
             paddleSize = 100;
         }
 
-        public abstract void MovePaddle();
+        public Rectangle GetPaddle()
+        {
+            return new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize);
+        }
 
 
         public void PaddleYUp()
