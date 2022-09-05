@@ -26,10 +26,10 @@ namespace Pong_NEM
             ballStartY = formRectangle.Height / 2;
             this.graphics = graphics;
 
+            ball = new Ball(ballStartX, ballStartY, random, formRectangle, graphics, formRectangle);
             playerPaddle = new PlayerPaddle(graphics, formRectangle);
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
-            ball = new Ball(ballStartX, ballStartY, random, formRectangle, graphics, formRectangle, playerPaddle, cpuPaddle);
-            
+            cpuPaddle = new CpuPaddle(graphics, formRectangle);
             screen = new Screen(graphics, formRectangle, ball, playerPaddle, cpuPaddle);
         }
 

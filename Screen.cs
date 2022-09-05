@@ -14,10 +14,8 @@ namespace Pong_NEM
         // Class Variables
         private Graphics graphics;
         private Rectangle formRectangle;
-
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
-
         //private BufferedGraphicsContext bufferedGraphicsContext;
         
 

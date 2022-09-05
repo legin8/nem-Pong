@@ -17,7 +17,6 @@ namespace Pong_NEM
         // Holds References
         private Graphics graphics;
         private Rectangle formRectangle;
-        private Paddle playerPaddle, cpuPaddle;
 
         // This class variables
         private int ballSpeedX, ballSpeedY; // Ball position and speed
@@ -32,8 +31,7 @@ namespace Pong_NEM
 
 
         // Class Constructor
-        public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, Graphics graphics, 
-            Rectangle formRectangle, Paddle playerPaddle, Paddle cpuPaddle)
+        public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, Graphics graphics, Rectangle formRectangle)
         {
             this.graphics = graphics;
 
@@ -42,10 +40,7 @@ namespace Pong_NEM
             this.ballPositionY = ballPositionY;
             ballSpeedX = 20;
             ballSpeedY = 20;
-
             this.formRectangle = formRectangle;
-            this.playerPaddle = playerPaddle;
-            this.cpuPaddle = cpuPaddle;
         }
 
         // This will call Methods in ball Class to check and move Ball
@@ -76,17 +71,6 @@ namespace Pong_NEM
         // This will set the correct position of the ball for the bounce.
         private void SideBounce()
         {
-            /*
-            if (ballPositionX == cpuPaddle.PaddleSideX - cpuPaddle.PaddleWidth && ballPositionY >= cpuPaddle.PaddlePositionY
-                && ballPositionY >= cpuPaddle.PaddlePositionY + cpuPaddle.PaddleSize)
-            {
-                ballXGoUp = !ballXGoUp;
-                ballPositionX = cpuPaddle.PaddleSideX - cpuPaddle.PaddleWidth;
-            }
-            */
-            
-
-            // This is for if one side loses
             // Left and Right
             if (ballPositionX >= formRectangle.Right - BALLSIZE)
             {
