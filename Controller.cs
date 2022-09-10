@@ -15,6 +15,7 @@ namespace Pong_NEM
         private Paddle playerPaddle, cpuPaddle;
         private Screen screen;
         private Score playerScore, cpuScore;
+        private ScoreBoard scoreBoard;
 
         private int ballStartX, ballStartY;
 
@@ -31,6 +32,7 @@ namespace Pong_NEM
             screen = new Screen(graphics, formRectangle, ball, playerPaddle, cpuPaddle);
             playerScore = new Score("Nigel");
             cpuScore = new Score("Bob");
+            scoreBoard = new ScoreBoard(formRectangle);
         }
 
         // This will be called by the timer
