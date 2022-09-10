@@ -29,10 +29,11 @@ namespace Pong_NEM
             playerPaddle = new PlayerPaddle(graphics, formRectangle);
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
-            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
             playerScore = new Score("Nigel");
             cpuScore = new Score("Bob");
             scoreBoard = new ScoreBoard(formRectangle);
+            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
+            
         }
 
         // This will be called by the timer

@@ -45,6 +45,7 @@ namespace Pong_NEM
             graphics.Clear(Control.DefaultBackColor);
 
             graphics.FillEllipse(ball.GetBrush, ball.GetBall()); // Ball
+            graphics.FillRectangle(scoreBoard.GetScoreBoardBrush, scoreBoard.GetScoreBoardRectangle); // Testing Code for Score Board
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddle()); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddle()); // Cpu Paddle
             
