@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Pong_NEM
 {
-    public abstract class Score
+    public class Score
     {
         // Abstract Class
         // Class Variables
-        protected int score = 0;
-        protected string name;
+        private int score = 0;
+        private string name;
 
         // Gets and sets
         public int GetScore { get => score; set => score = value; }

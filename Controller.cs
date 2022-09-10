@@ -14,8 +14,7 @@ namespace Pong_NEM
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
         private Screen screen;
-
-        private Graphics graphics;
+        private Score playerScore, cpuScore;
 
         private int ballStartX, ballStartY;
 
@@ -24,13 +23,14 @@ namespace Pong_NEM
         {
             ballStartX = formRectangle.Width / 2;
             ballStartY = formRectangle.Height / 2;
-            this.graphics = graphics;
 
             ball = new Ball(ballStartX, ballStartY, random, formRectangle, graphics, formRectangle);
             playerPaddle = new PlayerPaddle(graphics, formRectangle);
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
             screen = new Screen(graphics, formRectangle, ball, playerPaddle, cpuPaddle);
+            playerScore = new Score("Nigel");
+            cpuScore = new Score("Bob");
         }
 
         // This will be called by the timer
