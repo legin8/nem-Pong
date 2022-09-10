@@ -13,20 +13,24 @@ namespace Pong_NEM
     {
         // Class Variables
         private Graphics graphics;
-        private Rectangle formRectangle;
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
+        private Score playerScore, cpuScore;
+        private ScoreBoard scoreBoard;
         //private BufferedGraphicsContext bufferedGraphicsContext;
         
 
         // Class Constructor
-        public Screen(Graphics graphics, Rectangle formRectangle, Ball ball, Paddle playerPaddle, Paddle cpuPaddle)
+        public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
+            ScoreBoard scoreBoard)
         {
             this.graphics = graphics;
-            this.formRectangle = formRectangle;
             this.ball = ball;
             this.playerPaddle = playerPaddle;
             this.cpuPaddle = cpuPaddle;
+            this.playerScore = playerScore;
+            this.cpuScore = cpuScore;
+            this.scoreBoard = scoreBoard;
 
             //bufferedGraphicsContext = new BufferedGraphicsContext();
             
