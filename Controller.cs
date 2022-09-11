@@ -30,7 +30,7 @@ namespace Pong_NEM
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
             playerScore = new Score("Nigel", formRectangle.Left + 20);
-            cpuScore = new Score("Bob", formRectangle.Right - 20);
+            cpuScore = new Score("CPU", formRectangle.Right - 100);
             scoreBoard = new ScoreBoard(formRectangle);
             screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
             

@@ -11,7 +11,7 @@ namespace Pong_NEM
     {
         // Abstract Class
         // Class Variables
-        private const int NAMEOFYPOSITION = 20;
+        private const int NAMEOFYPOSITION = 20, SCOREOFYPOSITION = 60;
         private int score = 0, nameXPosition;
         private string name;
 
@@ -22,6 +22,7 @@ namespace Pong_NEM
         public string GetName { get => name; }
         public int GetNameXPosition { get => nameXPosition; }
         public int GetNameOfYPosition { get => NAMEOFYPOSITION; }
+        public int GetScoreOfYPosition { get => SCOREOFYPOSITION; }
         public Font GetFont { get => font; }
 
         public Score(string name, int nameXPosition)
