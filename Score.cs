@@ -11,16 +11,20 @@ namespace Pong_NEM
     {
         // Abstract Class
         // Class Variables
-        private int score = 0;
+        private const int NAMEOFYPOSITION = 20;
+        private int score = 0, nameXPosition;
         private string name;
 
         // Gets and sets
         public int GetScore { get => score; set => score = value; }
-        public string Name { get => name; }
+        public string GetName { get => name; }
+        public int GetNameXPosition { get => nameXPosition; }
+        public int GetNameOfYPosition { get => NAMEOFYPOSITION; }
 
-        public Score(string name)
+        public Score(string name, int nameXPosition)
         {
             this.name = name;
+            this.nameXPosition = nameXPosition;
         }
 
     }
