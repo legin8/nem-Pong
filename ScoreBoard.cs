@@ -18,6 +18,7 @@ namespace Pong_NEM
         // Gets
         public Rectangle GetScoreBoardRectangle { get => scoreBoardRectangle; }
         public Brush GetScoreBoardBrush { get => brush; }
+        
 
         // Class constructor
         public ScoreBoard(Rectangle formRectangle)

@@ -22,15 +22,16 @@ namespace Pong_NEM
         // Class Constructor
         public Controller(Graphics graphics, Random random, Rectangle formRectangle)
         {
-            ball = new Ball(formRectangle.Width / 2, formRectangle.Height / 2, random, formRectangle, graphics, formRectangle);
-            playerPaddle = new PlayerPaddle(graphics, formRectangle);
-            cpuPaddle = new CpuPaddle(graphics, formRectangle);
-            cpuPaddle = new CpuPaddle(graphics, formRectangle);
+            scoreBoard = new ScoreBoard(formRectangle);
+            playerPaddle = new PlayerPaddle(graphics, formRectangle, scoreBoard.GetScoreBoardRectangle);
+            cpuPaddle = new CpuPaddle(graphics, formRectangle, scoreBoard.GetScoreBoardRectangle);
             playerScore = new Score("Nigel", formRectangle.Left + 20);
             cpuScore = new Score("CPU", formRectangle.Right - 100);
-            scoreBoard = new ScoreBoard(formRectangle);
-            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
             
+            ball = new Ball(formRectangle.Width / 2, formRectangle.Height / 2, random, formRectangle, graphics, formRectangle,
+                scoreBoard);
+            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
+
         }
 
         // This will be called by the timer

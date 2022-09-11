@@ -17,6 +17,7 @@ namespace Pong_NEM
         // Holds References
         private Rectangle formRectangle;
         private Brush brush;
+        private ScoreBoard scoreBoard;
 
         // This class variables
         private int ballSpeedX, ballSpeedY; // Ball position and speed
@@ -27,7 +28,8 @@ namespace Pong_NEM
         public Brush GetBrush { get => brush; }
 
         // Class Constructor
-        public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, Graphics graphics, Rectangle formRectangle)
+        public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, Graphics graphics, 
+            Rectangle formRectangle, ScoreBoard scoreBoard)
         {
             this.ballPositionX = ballPositionX;
             this.ballPositionY = ballPositionY;
@@ -35,6 +37,7 @@ namespace Pong_NEM
             ballSpeedY = 20;
             this.formRectangle = formRectangle;
             brush = Brushes.Black;
+            this.scoreBoard = scoreBoard;
         }
 
         // This will Return the current Rectangle for the ball

@@ -12,7 +12,7 @@ namespace Pong_NEM
 
         
         // Class Constructor for child class
-        public PlayerPaddle(Graphics graphics, Rectangle formRectangle) : base(graphics, formRectangle)
+        public PlayerPaddle(Graphics graphics, Rectangle formRectangle, Rectangle scoreBoardRectangle) : base(graphics, formRectangle, scoreBoardRectangle)
         {
             paddleSide = 0;
             paddlePositionY = 200;
