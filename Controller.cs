@@ -17,15 +17,12 @@ namespace Pong_NEM
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
 
-        private int ballStartX, ballStartY;
+        
 
         // Class Constructor
         public Controller(Graphics graphics, Random random, Rectangle formRectangle)
         {
-            ballStartX = formRectangle.Width / 2;
-            ballStartY = formRectangle.Height / 2;
-
-            ball = new Ball(ballStartX, ballStartY, random, formRectangle, graphics, formRectangle);
+            ball = new Ball(formRectangle.Width / 2, formRectangle.Height / 2, random, formRectangle, graphics, formRectangle);
             playerPaddle = new PlayerPaddle(graphics, formRectangle);
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
             cpuPaddle = new CpuPaddle(graphics, formRectangle);
