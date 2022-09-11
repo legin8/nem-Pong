@@ -15,16 +15,20 @@ namespace Pong_NEM
         private int score = 0, nameXPosition;
         private string name;
 
+        private Font font;
+
         // Gets and sets
         public int GetScore { get => score; set => score = value; }
         public string GetName { get => name; }
         public int GetNameXPosition { get => nameXPosition; }
         public int GetNameOfYPosition { get => NAMEOFYPOSITION; }
+        public Font GetFont { get => font; }
 
         public Score(string name, int nameXPosition)
         {
             this.name = name;
             this.nameXPosition = nameXPosition;
+            font = new Font("Ariel", 20, FontStyle.Bold);
         }
 
     }

@@ -46,6 +46,8 @@ namespace Pong_NEM
 
             graphics.FillEllipse(ball.GetBrush, ball.GetBall()); // Ball
             graphics.FillRectangle(scoreBoard.GetScoreBoardBrush, scoreBoard.GetScoreBoardRectangle); // Testing Code for Score Board
+            graphics.DrawString(playerScore.GetName, playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetNameOfYPosition)); // Testing Code for Score Name
+
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddle()); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddle()); // Cpu Paddle
             
