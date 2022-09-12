@@ -15,7 +15,7 @@ namespace Pong_NEM
         private const int BALLSIZE = 20;
 
         // Holds References
-        private Rectangle formRectangle, scoreBoard;
+        private Rectangle formRectangle, scoreBoardRectangle;
         private Brush brush;
 
         // This class variables
@@ -28,7 +28,7 @@ namespace Pong_NEM
 
         // Class Constructor
         public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, 
-            Rectangle formRectangle, Rectangle scoreBoard)
+            Rectangle formRectangle, Rectangle scoreBoardRectangle)
         {
             this.ballPositionX = ballPositionX;
             this.ballPositionY = ballPositionY;
@@ -36,7 +36,7 @@ namespace Pong_NEM
             ballSpeedY = 20;
             this.formRectangle = formRectangle;
             brush = Brushes.Black;
-            this.scoreBoard = scoreBoard;
+            this.scoreBoardRectangle = scoreBoardRectangle;
         }
 
         // This will Return the current Rectangle for the ball
@@ -74,32 +74,32 @@ namespace Pong_NEM
         private void SideBounce()
         {
             // Left and Right
-            if (ballPositionX >= formRectangle.Right - BALLSIZE)
+            if (ballPositionX >= formRectangle.Right - (BALLSIZE + (BALLSIZE / 2)))
             {
-                ballXGoUp = !ballXGoUp;
+                ballXGoUp = false;
                 ballPositionX = formRectangle.Right - BALLSIZE;
-                isReset = !isReset;
+                isReset = true;
             }
 
-            if (ballPositionX <= formRectangle.Left)
+            if (ballPositionX <= formRectangle.Left + BALLSIZE)
             {
-                ballXGoUp = !ballXGoUp;
+                ballXGoUp = true;
                 ballPositionX = formRectangle.Left;
-                isReset = !isReset;
+                isReset = true;
             }
 
             // Top and Bottom
-            if (ballPositionY >= formRectangle.Bottom - BALLSIZE)
+            if (ballPositionY >= formRectangle.Bottom - (BALLSIZE + (BALLSIZE / 2)))
             {
-                ballYGoUp = !ballYGoUp;
+                ballYGoUp = false;
                 ballPositionY = formRectangle.Bottom - BALLSIZE;
                 Console.Beep();
             }
 
-            if (ballPositionY <= formRectangle.Top - BALLSIZE)
+            if (ballPositionY <= scoreBoardRectangle.Bottom - BALLSIZE)
             {
-                ballYGoUp = !ballYGoUp;
-                ballPositionY = formRectangle.Top - BALLSIZE;
+                ballYGoUp = true;
+                ballPositionY = scoreBoardRectangle.Bottom;
                 Console.Beep();
             }
         }
@@ -109,7 +109,7 @@ namespace Pong_NEM
         {
             ballPositionX = formRectangle.Width / 2;
             ballPositionY = formRectangle.Height /2;
-            isReset = !isReset;
+            isReset = false;
             Console.Beep(2000, 200);
         }
 
