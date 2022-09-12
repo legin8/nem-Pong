@@ -28,7 +28,7 @@ namespace Pong_NEM
             playerScore = new Score("Nigel", formRectangle.Left + 20);
             cpuScore = new Score("CPU", formRectangle.Right - 100);
             
-            ball = new Ball(formRectangle.Width / 2, formRectangle.Height / 2, random, formRectangle, graphics, formRectangle,
+            ball = new Ball(formRectangle.Width / 2, formRectangle.Height / 2, random, formRectangle, formRectangle,
                 scoreBoard);
             screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
 

@@ -28,7 +28,7 @@ namespace Pong_NEM
         public Brush GetBrush { get => brush; }
 
         // Class Constructor
-        public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, Graphics graphics, 
+        public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, 
             Rectangle formRectangle, ScoreBoard scoreBoard)
         {
             this.ballPositionX = ballPositionX;
