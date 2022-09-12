@@ -15,9 +15,8 @@ namespace Pong_NEM
         private const int BALLSIZE = 20;
 
         // Holds References
-        private Rectangle formRectangle;
+        private Rectangle formRectangle, scoreBoard;
         private Brush brush;
-        private ScoreBoard scoreBoard;
 
         // This class variables
         private int ballSpeedX, ballSpeedY; // Ball position and speed
@@ -29,7 +28,7 @@ namespace Pong_NEM
 
         // Class Constructor
         public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, 
-            Rectangle formRectangle, ScoreBoard scoreBoard)
+            Rectangle formRectangle, Rectangle scoreBoard)
         {
             this.ballPositionX = ballPositionX;
             this.ballPositionY = ballPositionY;
