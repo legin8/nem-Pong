@@ -17,6 +17,7 @@ namespace Pong_NEM
         // Holds References
         private Rectangle formRectangle, scoreBoardRectangle;
         private Brush brush;
+        private Score playerScore, cpuScore;
 
         // This class variables
         private int ballSpeedX, ballSpeedY; // Ball position and speed
@@ -28,7 +29,7 @@ namespace Pong_NEM
 
         // Class Constructor
         public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, 
-            Rectangle formRectangle, Rectangle scoreBoardRectangle)
+            Rectangle formRectangle, Rectangle scoreBoardRectangle, Score playerScore, Score cpuScore)
         {
             this.ballPositionX = ballPositionX;
             this.ballPositionY = ballPositionY;
@@ -37,6 +38,8 @@ namespace Pong_NEM
             this.formRectangle = formRectangle;
             brush = Brushes.Black;
             this.scoreBoardRectangle = scoreBoardRectangle;
+            this.playerScore = playerScore;
+            this.cpuScore = cpuScore;
         }
 
         // This will Return the current Rectangle for the ball
@@ -79,6 +82,7 @@ namespace Pong_NEM
                 ballXGoUp = false;
                 ballPositionX = formRectangle.Right - BALLSIZE;
                 isReset = true;
+                playerScore.CurrentScore++;
             }
 
             if (ballPositionX <= formRectangle.Left + BALLSIZE)
@@ -86,6 +90,7 @@ namespace Pong_NEM
                 ballXGoUp = true;
                 ballPositionX = formRectangle.Left;
                 isReset = true;
+                cpuScore.CurrentScore++;
             }
 
             // Top and Bottom

@@ -18,7 +18,7 @@ namespace Pong_NEM
         private Font font;
 
         // Gets and sets
-        public int GetScore { get => score; set => score = value; }
+        public int CurrentScore { get => score; set => score = value; }
         public string GetName { get => name; }
         public int GetNameXPosition { get => nameXPosition; }
         public int GetNameOfYPosition { get => NAMEOFYPOSITION; }

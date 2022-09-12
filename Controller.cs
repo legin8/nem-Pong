@@ -29,7 +29,7 @@ namespace Pong_NEM
             cpuScore = new Score("CPU", formRectangle.Right - 100);
             
             ball = new Ball(formRectangle.Width / 2, formRectangle.Height / 2, random, formRectangle, formRectangle,
-                scoreBoard.GetScoreBoardRectangle);
+                scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore);
             screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
 
         }
