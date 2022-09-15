@@ -13,10 +13,11 @@ namespace Pong_NEM
         protected const int PADDLEWIDTH = 20;
         protected Brush brush;
         protected Graphics graphics;
-        protected Rectangle formRectangle, scoreBoardRectangle;
+        protected Rectangle formRectangle, scoreBoardRectangle, paddleRectangel;
         protected int paddlePositionY, paddleSize, paddleSide;
 
         public Brush GetBrush { get => brush; }
+        public Rectangle GetPaddleRectangel { get => paddleRectangel; }
 
         // Class Constructor
         public Paddle(Graphics graphics, Rectangle formRectangle, Rectangle scoreBoardRectangle)
