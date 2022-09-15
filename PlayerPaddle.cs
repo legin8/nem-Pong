@@ -15,7 +15,7 @@ namespace Pong_NEM
         public PlayerPaddle(Graphics graphics, Rectangle formRectangle, Rectangle scoreBoardRectangle) : base(graphics, formRectangle, scoreBoardRectangle)
         {
             paddleSide = 0;
-            paddlePositionY = 200;
+            paddlePositionY = 700;
             brush = Brushes.Tomato;
         }
 

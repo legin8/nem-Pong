@@ -89,7 +89,7 @@ namespace Pong_NEM
                 playerScore.CurrentScore++;
             }
 
-            if (ballPositionX <= formRectangle.Left + BALLSIZE)
+            if (ballPositionX <= formRectangle.Left)
             {
                 ballXGoUp = true;
                 ballPositionX = formRectangle.Left;
@@ -97,17 +97,37 @@ namespace Pong_NEM
                 cpuScore.CurrentScore++;
             }
 
+
+
+
             // Left and Right, For bouncing of paddles
-            if (ballPositionX >= cpuPaddle.GetPaddleRectangel.Left && ballPositionX <= cpuPaddle.GetPaddleRectangel.Right)
+            if (ballPositionX >= cpuPaddle.GetPaddleRectangel.Left && ballPositionX <= cpuPaddle.GetPaddleRectangel.Right 
+                && ballPositionY >= cpuPaddle.GetPaddleRectangel.Top && ballPositionY <= cpuPaddle.GetPaddleRectangel.Bottom)
             {
                 ballXGoUp = false;
                 ballPositionX = cpuPaddle.GetPaddleRectangel.Left;
             }
 
-            if (ballPositionX >= playerPaddle.GetPaddleRectangel.Right && ballPositionX <= playerPaddle.GetPaddleRectangel.Left)
+            if (ballPositionX <= playerPaddle.GetPaddleRectangel.Right && ballPositionX >= playerPaddle.GetPaddleRectangel.Left)
+            {
+                if (ballPositionY >= playerPaddle.GetPaddleRectangel.Top && ballPositionY <= playerPaddle.GetPaddleRectangel.Bottom)
+                {
+                    ballXGoUp = true;
+                    ballPositionX = playerPaddle.GetPaddleRectangel.Right;
+                    Console.Beep(4000, 200);
+                }
+            }
+
+            /*
+            if (ballPositionX >= playerPaddle.GetPaddleRectangel.Left && ballPositionX <= playerPaddle.GetPaddleRectangel.Right
+                && ballPositionY <= playerPaddle.GetPaddleRectangel.Top && ballPositionY >= playerPaddle.GetPaddleRectangel.Bottom)
             {
                 ballXGoUp = true;
+                ballPositionX = playerPaddle.GetPaddleRectangel.Right + BALLSIZE;
             }
+            */
+
+
 
             // Top and Bottom
             if (ballPositionY >= formRectangle.Bottom - (BALLSIZE + (BALLSIZE / 2)))
