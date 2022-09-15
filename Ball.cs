@@ -101,13 +101,22 @@ namespace Pong_NEM
 
 
             // Left and Right, For bouncing of paddles
-            if (ballPositionX >= cpuPaddle.GetPaddleRectangel.Left && ballPositionX <= cpuPaddle.GetPaddleRectangel.Right 
-                && ballPositionY >= cpuPaddle.GetPaddleRectangel.Top && ballPositionY <= cpuPaddle.GetPaddleRectangel.Bottom)
+            // Cpu
+            
+            /*
+            if (ballPositionX >= cpuPaddle.GetPaddleRectangel.Left && ballPositionX <= cpuPaddle.GetPaddleRectangel.Right)
             {
-                ballXGoUp = false;
-                ballPositionX = cpuPaddle.GetPaddleRectangel.Left;
+                if (ballPositionY >= cpuPaddle.GetPaddleRectangel.Top && ballPositionY <= cpuPaddle.GetPaddleRectangel.Bottom)
+                {
+                    ballXGoUp = false;
+                    ballPositionX = cpuPaddle.GetPaddleRectangel.Left - BALLSIZE;
+                    Console.Beep(4000, 200);
+                }
             }
+            */
 
+            
+            // Player
             if (ballPositionX <= playerPaddle.GetPaddleRectangel.Right && ballPositionX >= playerPaddle.GetPaddleRectangel.Left)
             {
                 if (ballPositionY >= playerPaddle.GetPaddleRectangel.Top && ballPositionY <= playerPaddle.GetPaddleRectangel.Bottom)

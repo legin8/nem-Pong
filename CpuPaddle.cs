@@ -13,8 +13,8 @@ namespace Pong_NEM
         // Class Constructor
         public CpuPaddle(Graphics graphics, Rectangle formRectangle, Rectangle scoreBoardRectangle) : base(graphics, formRectangle, scoreBoardRectangle)
         {
-            paddleSide = formRectangle.Right - PADDLEWIDTH;
-            paddlePositionY = 200;
+            paddleSide = 1000;
+            paddlePositionY = 400;
             brush = Brushes.Tomato;
         }
 

@@ -26,8 +26,11 @@ namespace Pong_NEM
     {
         // Class Variables
         public Controller controller;
+        private Bitmap bufferImage;
         private Graphics graphics;
+        private Graphics bufferGraphics;
         private Random random;
+
 
         // Class Form Constructor
         public Form1()
@@ -35,15 +38,19 @@ namespace Pong_NEM
             InitializeComponent();
             graphics = CreateGraphics();
             random = new Random();
-            controller = new Controller(graphics, random, ClientRectangle);
+            bufferImage = new Bitmap(Width, Height);
+            bufferGraphics = Graphics.FromImage(bufferImage); 
+            graphics = CreateGraphics();
+            controller = new Controller(bufferGraphics, random, ClientRectangle);
+
         }
 
         // Event handler for timer
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            bufferGraphics.FillRectangle(Brushes.Black, 0, 0, Width, Height);
             controller.RunGame();
-
+            graphics.DrawImage(bufferImage, 0, 0);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)

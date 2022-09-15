@@ -24,9 +24,9 @@ namespace Pong_NEM
         {
             this.graphics = graphics;
             this.formRectangle = formRectangle;
-            paddleSize = 2000;
+            paddleSize = 200;
             this.scoreBoardRectangle = scoreBoardRectangle;
-            this.paddleRectangel = new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize);
+            paddleRectangel = new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize);
         }
 
         public void PaddleYUp()
