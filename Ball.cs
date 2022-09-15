@@ -80,7 +80,7 @@ namespace Pong_NEM
         // This will set the correct position of the ball for the bounce.
         private void SideBounce()
         {
-            // Left and Right
+            // Left and Right, For Scoring
             if (ballPositionX >= formRectangle.Right - (BALLSIZE + (BALLSIZE / 2)))
             {
                 ballXGoUp = false;
@@ -95,6 +95,18 @@ namespace Pong_NEM
                 ballPositionX = formRectangle.Left;
                 isReset = true;
                 cpuScore.CurrentScore++;
+            }
+
+            // Left and Right, For bouncing of paddles
+            if (ballPositionX >= cpuPaddle.GetPaddleRectangel.Left && ballPositionX <= cpuPaddle.GetPaddleRectangel.Right)
+            {
+                ballXGoUp = false;
+                ballPositionX = cpuPaddle.GetPaddleRectangel.Left;
+            }
+
+            if (ballPositionX >= playerPaddle.GetPaddleRectangel.Right && ballPositionX <= playerPaddle.GetPaddleRectangel.Left)
+            {
+                ballXGoUp = true;
             }
 
             // Top and Bottom
