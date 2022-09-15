@@ -18,6 +18,7 @@ namespace Pong_NEM
         private Rectangle formRectangle, scoreBoardRectangle;
         private Brush brush;
         private Score playerScore, cpuScore;
+        private Paddle playerPaddle, cpuPaddle;
 
         // This class variables
         private int ballSpeedX, ballSpeedY; // Ball position and speed
@@ -29,7 +30,8 @@ namespace Pong_NEM
 
         // Class Constructor
         public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, 
-            Rectangle formRectangle, Rectangle scoreBoardRectangle, Score playerScore, Score cpuScore)
+            Rectangle formRectangle, Rectangle scoreBoardRectangle, Score playerScore, Score cpuScore, Paddle playerPaddle,
+            Paddle cpuPaddle)
         {
             this.ballPositionX = ballPositionX;
             this.ballPositionY = ballPositionY;
@@ -40,6 +42,8 @@ namespace Pong_NEM
             this.scoreBoardRectangle = scoreBoardRectangle;
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
+            this.playerPaddle = playerPaddle;
+            this.cpuPaddle = cpuPaddle;
         }
 
         // This will Return the current Rectangle for the ball
