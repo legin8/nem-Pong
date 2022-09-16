@@ -81,7 +81,7 @@ namespace Pong_NEM
         private void SideBounce()
         {
             // Left and Right, For Scoring
-            if (ballPositionX >= formRectangle.Right - (BALLSIZE + (BALLSIZE / 2)))
+            if (ballPositionX >= formRectangle.Right - BALLSIZE)
             {
                 ballXGoUp = false;
                 ballPositionX = formRectangle.Right - BALLSIZE;
@@ -102,18 +102,16 @@ namespace Pong_NEM
 
             // Left and Right, For bouncing of paddles
             // Cpu
-            
-            /*
-            if (ballPositionX >= cpuPaddle.GetPaddleRectangel.Left && ballPositionX <= cpuPaddle.GetPaddleRectangel.Right)
+            if (ballPositionX >= cpuPaddle.GetPaddleRectangle.Left && ballPositionX <= cpuPaddle.GetPaddleRectangle.Right)
             {
-                if (ballPositionY >= cpuPaddle.GetPaddleRectangel.Top && ballPositionY <= cpuPaddle.GetPaddleRectangel.Bottom)
+                if (ballPositionY >= cpuPaddle.GetPaddleRectangle.Top && ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom)
                 {
                     ballXGoUp = false;
-                    ballPositionX = cpuPaddle.GetPaddleRectangel.Left - BALLSIZE;
+                    ballPositionX = cpuPaddle.GetPaddleRectangle.Left - BALLSIZE;
                     Console.Beep(4000, 200);
                 }
             }
-            */
+            
 
             
             // Player
@@ -126,15 +124,6 @@ namespace Pong_NEM
                     Console.Beep(4000, 200);
                 }
             }
-
-            /*
-            if (ballPositionX >= playerPaddle.GetPaddleRectangel.Left && ballPositionX <= playerPaddle.GetPaddleRectangel.Right
-                && ballPositionY <= playerPaddle.GetPaddleRectangel.Top && ballPositionY >= playerPaddle.GetPaddleRectangel.Bottom)
-            {
-                ballXGoUp = true;
-                ballPositionX = playerPaddle.GetPaddleRectangel.Right + BALLSIZE;
-            }
-            */
 
 
 
