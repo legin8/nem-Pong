@@ -21,7 +21,7 @@ namespace Pong_NEM
         public Paddle(Rectangle formRectangle, Rectangle scoreBoardRectangle)
         {
             this.formRectangle = formRectangle;
-            paddleWidth = 2000;
+            paddleWidth = 200;
             paddlePositionY = formRectangle.Bottom / 2;
             this.scoreBoardRectangle = scoreBoardRectangle;
         }

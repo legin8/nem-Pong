@@ -102,9 +102,9 @@ namespace Pong_NEM
 
             // Left and Right, For bouncing of paddles
             // Cpu
-            if (ballPositionX >= cpuPaddle.GetPaddleRectangle.Left && ballPositionX <= cpuPaddle.GetPaddleRectangle.Right)
+            if (ballPositionX >= cpuPaddle.GetPaddleRectangle.Left - BALLSIZE && ballPositionX <= cpuPaddle.GetPaddleRectangle.Right - BALLSIZE)
             {
-                if (ballPositionY >= cpuPaddle.GetPaddleRectangle.Top && ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom)
+                if (ballPositionY >= cpuPaddle.GetPaddleRectangle.Top - BALLSIZE && ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom - BALLSIZE )
                 {
                     ballXGoUp = false;
                     ballPositionX = cpuPaddle.GetPaddleRectangle.Left - BALLSIZE;
@@ -127,7 +127,7 @@ namespace Pong_NEM
 
 
 
-            // Top and Bottom
+            // Top and Bottom Bounce
             if (ballPositionY >= formRectangle.Bottom - (BALLSIZE + (BALLSIZE / 2)))
             {
                 ballYGoUp = false;
