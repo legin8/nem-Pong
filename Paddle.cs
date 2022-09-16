@@ -12,22 +12,20 @@ namespace Pong_NEM
         // Class Variables
         protected const int PADDLEWIDTH = 20;
         protected Brush brush;
-        protected Graphics graphics;
         protected Rectangle formRectangle, scoreBoardRectangle;
-        protected int paddlePositionY, paddleSize, paddleSide;
+        protected int paddlePositionY, paddleSizeX, paddleSide;
 
         public Brush GetBrush => brush;
 
         // Class Constructor
-        public Paddle(Graphics graphics, Rectangle formRectangle, Rectangle scoreBoardRectangle)
+        public Paddle(Rectangle formRectangle, Rectangle scoreBoardRectangle)
         {
-            this.graphics = graphics;
             this.formRectangle = formRectangle;
-            paddleSize = 200;
+            paddleSizeX = 200;
             this.scoreBoardRectangle = scoreBoardRectangle;
         }
 
-        public Rectangle GetPaddleRectangle => new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleSize);
+        public Rectangle GetPaddleRectangle => new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleSizeX);
 
         public void PaddleYUp()
         {
@@ -38,8 +36,8 @@ namespace Pong_NEM
 
         public void PaddleYDown()
         {
-            if (paddlePositionY < formRectangle.Bottom - paddleSize) paddlePositionY += 10;
-            if (paddlePositionY > formRectangle.Bottom - paddleSize) paddlePositionY = formRectangle.Bottom - paddleSize;
+            if (paddlePositionY < formRectangle.Bottom - paddleSizeX) paddlePositionY += 10;
+            if (paddlePositionY > formRectangle.Bottom - paddleSizeX) paddlePositionY = formRectangle.Bottom - paddleSizeX;
         }
     }
 }

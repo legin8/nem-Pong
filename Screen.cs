@@ -18,8 +18,7 @@ namespace Pong_NEM
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
 
-        private BufferedGraphicsContext bufferedGraphicsContext = new BufferedGraphicsContext();
-        private BufferedGraphics bufferedGraphics;
+        
 
         // Class Constructor
         public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,

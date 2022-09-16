@@ -23,8 +23,8 @@ namespace Pong_NEM
         public Controller(Graphics graphics, Random random, Rectangle formRectangle)
         {
             scoreBoard = new ScoreBoard(formRectangle);
-            playerPaddle = new PlayerPaddle(graphics, formRectangle, scoreBoard.GetScoreBoardRectangle);
-            cpuPaddle = new CpuPaddle(graphics, formRectangle, scoreBoard.GetScoreBoardRectangle);
+            playerPaddle = new PlayerPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle);
+            cpuPaddle = new CpuPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle);
             playerScore = new Score("Nigel", formRectangle.Left + 20);
             cpuScore = new Score("CPU", formRectangle.Right - 100);
             
