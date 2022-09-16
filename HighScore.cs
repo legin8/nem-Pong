@@ -1,4 +1,16 @@
-﻿using System;
+﻿/* Program name: Pong NEM
+Project file name: HighScore.cs
+Author: Nigel Maynard
+Date: 24/8/22
+Language: C#
+Platform: Microsoft Visual Studio 2022
+Purpose: Class work
+Description: Assessment game: Pong.
+Known Bugs:
+Additional Features:
+*/
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

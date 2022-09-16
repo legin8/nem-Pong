@@ -10,7 +10,6 @@ Known Bugs:
 Additional Features:
 */
 
-
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -44,47 +43,27 @@ namespace Pong_NEM
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
             this.scoreBoard = scoreBoard;
-
-            //bufferedGraphicsContext = new BufferedGraphicsContext();
-            
         }
 
         // Calls everything to be put on Screen
-        // Test
         public void DisplayScreen()
         {
             ball.UpdateBall();
 
             graphics.Clear(Control.DefaultBackColor);
 
-            graphics.FillEllipse(ball.GetBrush, ball.GetBall()); // Ball
-            graphics.FillRectangle(scoreBoard.GetScoreBoardBrush, scoreBoard.GetScoreBoardRectangle); // Testing Code for Score Board
-            graphics.DrawString(playerScore.GetName, playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetNameOfYPosition)); // Testing Code for Score Name
-            graphics.DrawString(playerScore.CurrentScore.ToString(), playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetScoreOfYPosition)); // Testing Code for Score Name
-
-
-            graphics.DrawString(cpuScore.GetName, cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetNameOfYPosition)); // Testing Code for Score Name
-            graphics.DrawString(cpuScore.CurrentScore.ToString(), cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetScoreOfYPosition)); // Testing Code for Score Name
-
+            // Ball
+            graphics.FillEllipse(ball.GetBrush, ball.GetBall());
+            // Score Board
+            graphics.FillRectangle(scoreBoard.GetScoreBoardBrush, scoreBoard.GetScoreBoardRectangle);
+            // Names and scores on Score Board
+            graphics.DrawString(playerScore.GetName, playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetNameOfYPosition));
+            graphics.DrawString(playerScore.CurrentScore.ToString(), playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetScoreOfYPosition));
+            graphics.DrawString(cpuScore.GetName, cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetNameOfYPosition));
+            graphics.DrawString(cpuScore.CurrentScore.ToString(), cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetScoreOfYPosition));
+            // Paddles
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
-
-
-            /*
-            graphics.FillEllipse(ball.GetBrush, ball.GetBall()); // Ball
-            graphics.FillRectangle(scoreBoard.GetScoreBoardBrush, scoreBoard.GetScoreBoardRectangle); // Testing Code for Score Board
-            graphics.DrawString(playerScore.GetName, playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetNameOfYPosition)); // Testing Code for Score Name
-            graphics.DrawString(playerScore.CurrentScore.ToString(), playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetScoreOfYPosition)); // Testing Code for Score Name
-
-
-            graphics.DrawString(cpuScore.GetName, cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetNameOfYPosition)); // Testing Code for Score Name
-            graphics.DrawString(cpuScore.CurrentScore.ToString(), cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetScoreOfYPosition)); // Testing Code for Score Name
-
-            graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangel); // Player Paddle
-            graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangel); // Cpu Paddle 
-            */
-
-            //bufferedGraphics.Render();
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Pong_NEM
         private Screen screen;
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
+        private HighScore highScore;
 
         
 
@@ -39,10 +40,9 @@ namespace Pong_NEM
             cpuPaddle = new CpuPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle);
             playerScore = new Score("Nigel", formRectangle.Left + 20);
             cpuScore = new Score("CPU", formRectangle.Right - 100);
-            
             ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle);
             screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
-
+            highScore = new HighScore();
         }
 
         // This will be called by the timer
@@ -54,12 +54,13 @@ namespace Pong_NEM
 
 
 
-
+        // Moves Player paddle up
         public void MovePaddleUp()
         {
             playerPaddle.PaddleYUp();
         }
 
+        // Moves Player paddle down
         public void MovePaddleDown()
         {
             playerPaddle.PaddleYDown();
