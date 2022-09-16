@@ -73,8 +73,8 @@ namespace Pong_NEM
             if (!ballXGoUp) ballPositionX -= ballSpeedX;
 
             // Y axis
-            if (ballYGoUp) ballPositionY += ballSpeedY;
-            if (!ballYGoUp) ballPositionY -= ballSpeedY;
+            //if (ballYGoUp) ballPositionY += ballSpeedY;
+            //if (!ballYGoUp) ballPositionY -= ballSpeedY;
         }
 
         // This will set the correct position of the ball for the bounce.
@@ -128,14 +128,14 @@ namespace Pong_NEM
 
 
             // Top and Bottom Bounce
-            if (ballPositionY >= formRectangle.Bottom - (BALLSIZE + (BALLSIZE / 2)))
+            if (ballPositionY >= formRectangle.Bottom - BALLSIZE)
             {
                 ballYGoUp = false;
                 ballPositionY = formRectangle.Bottom - BALLSIZE;
                 Console.Beep();
             }
 
-            if (ballPositionY <= scoreBoardRectangle.Bottom - BALLSIZE)
+            if (ballPositionY <= scoreBoardRectangle.Bottom)
             {
                 ballYGoUp = true;
                 ballPositionY = scoreBoardRectangle.Bottom;
