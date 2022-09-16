@@ -14,7 +14,7 @@ namespace Pong_NEM
         public CpuPaddle(Rectangle formRectangle, Rectangle scoreBoardRectangle) : base(formRectangle, scoreBoardRectangle)
         {
             paddleSide = formRectangle.Right - PADDLEWIDTH;
-            paddlePositionY = 400;
+            paddlePositionY = formRectangle.Bottom / 2;
             brush = Brushes.Tomato;
         }
 

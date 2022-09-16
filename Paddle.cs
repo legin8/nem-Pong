@@ -13,7 +13,7 @@ namespace Pong_NEM
         protected const int PADDLEWIDTH = 20;
         protected Brush brush;
         protected Rectangle formRectangle, scoreBoardRectangle;
-        protected int paddlePositionY, paddleSizeX, paddleSide;
+        protected int paddlePositionY, paddleWidth, paddleSide;
 
         public Brush GetBrush => brush;
 
@@ -21,23 +21,23 @@ namespace Pong_NEM
         public Paddle(Rectangle formRectangle, Rectangle scoreBoardRectangle)
         {
             this.formRectangle = formRectangle;
-            paddleSizeX = 200;
+            paddleWidth = 200;
+            paddlePositionY = formRectangle.Bottom / 2;
             this.scoreBoardRectangle = scoreBoardRectangle;
         }
 
-        public Rectangle GetPaddleRectangle => new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleSizeX);
+        public Rectangle GetPaddleRectangle => new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleWidth);
 
         public void PaddleYUp()
         {
-            if (paddlePositionY > 0) paddlePositionY -= 10;
+            if (paddlePositionY > scoreBoardRectangle.Top) paddlePositionY -= 10;
             if (paddlePositionY < scoreBoardRectangle.Bottom) paddlePositionY = scoreBoardRectangle.Bottom;
-            //if (paddlePositionY < 0) paddlePositionY = formRectangle.Top;
         }
 
         public void PaddleYDown()
         {
-            if (paddlePositionY < formRectangle.Bottom - paddleSizeX) paddlePositionY += 10;
-            if (paddlePositionY > formRectangle.Bottom - paddleSizeX) paddlePositionY = formRectangle.Bottom - paddleSizeX;
+            if (paddlePositionY < formRectangle.Bottom - paddleWidth) paddlePositionY += 10;
+            if (paddlePositionY > formRectangle.Bottom - paddleWidth) paddlePositionY = formRectangle.Bottom - paddleWidth;
         }
     }
 }
