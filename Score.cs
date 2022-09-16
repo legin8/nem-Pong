@@ -19,11 +19,11 @@ namespace Pong_NEM
 
         // Gets and sets
         public int CurrentScore { get => score; set => score = value; }
-        public string GetName { get => name; }
-        public int GetNameXPosition { get => nameXPosition; }
-        public int GetNameOfYPosition { get => NAMEOFYPOSITION; }
-        public int GetScoreOfYPosition { get => SCOREOFYPOSITION; }
-        public Font GetFont { get => font; }
+        public string GetName => name;
+        public int GetNameXPosition => nameXPosition;
+        public int GetNameOfYPosition => NAMEOFYPOSITION;
+        public int GetScoreOfYPosition => SCOREOFYPOSITION;
+        public Font GetFont => font;
 
         public Score(string name, int nameXPosition)
         {
