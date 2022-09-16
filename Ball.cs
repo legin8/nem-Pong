@@ -117,12 +117,12 @@ namespace Pong_NEM
 
             
             // Player
-            if (ballPositionX <= playerPaddle.GetPaddleRectangel.Right && ballPositionX >= playerPaddle.GetPaddleRectangel.Left)
+            if (ballPositionX <= playerPaddle.GetPaddleRectangle.Right && ballPositionX >= playerPaddle.GetPaddleRectangle.Left)
             {
-                if (ballPositionY >= playerPaddle.GetPaddleRectangel.Top && ballPositionY <= playerPaddle.GetPaddleRectangel.Bottom)
+                if (ballPositionY >= playerPaddle.GetPaddleRectangle.Top && ballPositionY <= playerPaddle.GetPaddleRectangle.Bottom)
                 {
                     ballXGoUp = true;
-                    ballPositionX = playerPaddle.GetPaddleRectangel.Right;
+                    ballPositionX = playerPaddle.GetPaddleRectangle.Right;
                     Console.Beep(4000, 200);
                 }
             }

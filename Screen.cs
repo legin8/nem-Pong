@@ -54,8 +54,8 @@ namespace Pong_NEM
             graphics.DrawString(cpuScore.GetName, cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetNameOfYPosition)); // Testing Code for Score Name
             graphics.DrawString(cpuScore.CurrentScore.ToString(), cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetScoreOfYPosition)); // Testing Code for Score Name
 
-            graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangel); // Player Paddle
-            graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangel); // Cpu Paddle
+            graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
+            graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
 
 
             /*
