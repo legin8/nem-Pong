@@ -21,35 +21,29 @@ namespace Pong_NEM
         private Paddle playerPaddle, cpuPaddle;
 
         // This class variables
-        private int ballSpeedX, ballSpeedY; // Ball position and speed
+        private int ballSpeedX, ballSpeedY;
         private bool ballXGoUp = true, ballYGoUp = true, isReset = false;
         private int ballPositionX, ballPositionY;
         
         // Gets and Sets
-        public Brush GetBrush { get => brush; }
+        public Brush GetBrush => brush;
+        public Rectangle GetBall() => new Rectangle(ballPositionX, ballPositionY, BALLSIZE, BALLSIZE);
 
         // Class Constructor
-        public Ball(int ballPositionX, int ballPositionY, Random random, Rectangle clientRectangle, 
-            Rectangle formRectangle, Rectangle scoreBoardRectangle, Score playerScore, Score cpuScore, Paddle playerPaddle,
-            Paddle cpuPaddle)
+        public Ball(Rectangle clientRectangle, Rectangle formRectangle, Rectangle scoreBoardRectangle,
+            Score playerScore, Score cpuScore, Paddle playerPaddle, Paddle cpuPaddle)
         {
-            this.ballPositionX = ballPositionX;
-            this.ballPositionY = ballPositionY;
-            ballSpeedX = 20;
-            ballSpeedY = 20;
             this.formRectangle = formRectangle;
-            brush = Brushes.Black;
             this.scoreBoardRectangle = scoreBoardRectangle;
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
             this.playerPaddle = playerPaddle;
             this.cpuPaddle = cpuPaddle;
-        }
-
-        // This will Return the current Rectangle for the ball
-        public Rectangle GetBall()
-        {
-            return new Rectangle(ballPositionX, ballPositionY, BALLSIZE, BALLSIZE);
+            ballPositionX = clientRectangle.Width / 2;
+            ballPositionY = clientRectangle.Height / 2;
+            ballSpeedX = 20;
+            ballSpeedY = 20;
+            brush = Brushes.Black;
         }
 
         // This will call Methods in ball Class to check and move Ball
@@ -71,16 +65,16 @@ namespace Pong_NEM
             // X axis
             if (ballXGoUp) ballPositionX += ballSpeedX;
             if (!ballXGoUp) ballPositionX -= ballSpeedX;
-
+            
             // Y axis
-            //if (ballYGoUp) ballPositionY += ballSpeedY;
-            //if (!ballYGoUp) ballPositionY -= ballSpeedY;
+            if (ballYGoUp) ballPositionY += ballSpeedY;
+            if (!ballYGoUp) ballPositionY -= ballSpeedY;
         }
 
         // This will set the correct position of the ball for the bounce.
         private void SideBounce()
         {
-            // Left and Right, For Scoring
+            // Right side Score and Reset
             if (ballPositionX >= formRectangle.Right - BALLSIZE)
             {
                 ballXGoUp = false;
@@ -89,6 +83,7 @@ namespace Pong_NEM
                 playerScore.CurrentScore++;
             }
 
+            // Left side Score and Reset
             if (ballPositionX <= formRectangle.Left)
             {
                 ballXGoUp = true;
@@ -98,10 +93,7 @@ namespace Pong_NEM
             }
 
 
-
-
-            // Left and Right, For bouncing of paddles
-            // Cpu
+            // Cpu Paddle Bounce
             if (ballPositionX >= cpuPaddle.GetPaddleRectangle.Left - BALLSIZE && ballPositionX <= cpuPaddle.GetPaddleRectangle.Right - BALLSIZE)
             {
                 if (ballPositionY >= cpuPaddle.GetPaddleRectangle.Top - BALLSIZE && ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom - BALLSIZE )
@@ -112,9 +104,7 @@ namespace Pong_NEM
                 }
             }
             
-
-            
-            // Player
+            // Player Paddle Bounce
             if (ballPositionX <= playerPaddle.GetPaddleRectangle.Right && ballPositionX >= playerPaddle.GetPaddleRectangle.Left)
             {
                 if (ballPositionY >= playerPaddle.GetPaddleRectangle.Top && ballPositionY <= playerPaddle.GetPaddleRectangle.Bottom)
@@ -126,15 +116,14 @@ namespace Pong_NEM
             }
 
 
-
-            // Top and Bottom Bounce
+            // Top Bounce
             if (ballPositionY >= formRectangle.Bottom - BALLSIZE)
             {
                 ballYGoUp = false;
                 ballPositionY = formRectangle.Bottom - BALLSIZE;
                 Console.Beep();
             }
-
+            // Bottom Bounce
             if (ballPositionY <= scoreBoardRectangle.Bottom)
             {
                 ballYGoUp = true;
@@ -143,7 +132,7 @@ namespace Pong_NEM
             }
         }
 
-       
+       // This is called to reset the ball position
         public void ResetBall()
         {
             ballPositionX = formRectangle.Width / 2;
@@ -151,6 +140,5 @@ namespace Pong_NEM
             isReset = false;
             Console.Beep(2000, 200);
         }
-
     }
 }
