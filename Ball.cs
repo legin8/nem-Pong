@@ -57,6 +57,16 @@ namespace Pong_NEM
                 MoveBall();
                 SideBounce();
             }
+
+            if (ballPositionX > formRectangle.Width / 2) {
+                if (ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom)
+                {
+                    cpuPaddle.MoveCpuPaddle(0);
+                } else
+                {
+                    cpuPaddle.MoveCpuPaddle(1);
+                }
+            }
         }
 
         // This Moves the Ball under perfect conditions

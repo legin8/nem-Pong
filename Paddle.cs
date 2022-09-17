@@ -40,6 +40,12 @@ namespace Pong_NEM
 
         public Rectangle GetPaddleRectangle => new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleWidth);
 
+        public void MoveCpuPaddle(int upOrDown)
+        {
+            if (upOrDown == 0) PaddleYUp();
+            if (upOrDown == 1) PaddleYDown();
+        }
+
         public void PaddleYUp()
         {
             if (paddlePositionY > scoreBoardRectangle.Top) paddlePositionY -= 10;

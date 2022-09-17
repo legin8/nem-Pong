@@ -30,7 +30,5 @@ namespace Pong_NEM
             brush = Brushes.Tomato;
         }
 
-        
-
     }
 }

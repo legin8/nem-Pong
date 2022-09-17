@@ -55,15 +55,15 @@ namespace Pong_NEM
 
 
         // Moves Player paddle up
-        public void MovePaddleUp()
+        public void MovePaddleUp(int up)
         {
-            playerPaddle.PaddleYUp();
+            playerPaddle.MoveCpuPaddle(up);
         }
 
         // Moves Player paddle down
-        public void MovePaddleDown()
+        public void MovePaddleDown(int down)
         {
-            playerPaddle.PaddleYDown();
+            playerPaddle.MoveCpuPaddle(down);
         }
 
     }

@@ -54,8 +54,8 @@ namespace Pong_NEM
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Up) controller.MovePaddleUp(); // Testing Code
-            if (e.KeyCode == Keys.Down) controller.MovePaddleDown(); // Testing Code
+            if (e.KeyCode == Keys.Up) controller.MovePaddleUp(0); // Testing Code
+            if (e.KeyCode == Keys.Down) controller.MovePaddleDown(1); // Testing Code
         }
     }
 }
