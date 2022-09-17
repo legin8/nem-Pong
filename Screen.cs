@@ -30,6 +30,7 @@ namespace Pong_NEM
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
         private bool hasScored;
+        private int pauseTimer;
 
         
 
@@ -45,18 +46,13 @@ namespace Pong_NEM
             this.cpuScore = cpuScore;
             this.scoreBoard = scoreBoard;
             hasScored = false;
+            pauseTimer = 0;
         }
 
         // Calls everything to be put on Screen
         public void DisplayScreen()
         {
-            if (!hasScored) PlayGameRun();
-            if (hasScored) PlayGameScorePause();
-        }
-
-        private void PlayGameRun()
-        {
-            ball.UpdateBall();
+            if (!hasScored) ball.UpdateBall();
 
             graphics.Clear(Control.DefaultBackColor);
 
@@ -72,24 +68,13 @@ namespace Pong_NEM
             // Paddles
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
+
+            if (hasScored)
+            {
+                
+            }
         }
 
-        private void PlayGameScorePause()
-        {
-            graphics.Clear(Control.DefaultBackColor);
 
-            // Score Board
-            graphics.FillRectangle(scoreBoard.GetScoreBoardBrush, scoreBoard.GetScoreBoardRectangle);
-            // Names and scores on Score Board
-            graphics.DrawString(playerScore.GetName, playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetNameOfYPosition));
-            graphics.DrawString(playerScore.CurrentScore.ToString(), playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetScoreOfYPosition));
-            graphics.DrawString(cpuScore.GetName, cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetNameOfYPosition));
-            graphics.DrawString(cpuScore.CurrentScore.ToString(), cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetScoreOfYPosition));
-            // Paddles
-            graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
-            graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
-
-            //graphics.DrawString(scoreBoard)
-        }
     }
 }
