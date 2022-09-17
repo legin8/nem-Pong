@@ -33,6 +33,10 @@ namespace Pong_NEM
         // Gets
         public Rectangle GetScoreBoardRectangle => scoreBoardRectangle;
         public Brush GetScoreBoardBrush => brush;
+        public string GetPlayerScore => PLAYERSCORE;
+        public string GetCpuScore => CPUSCORE;
+        public string GetYouWin => YOUWIN;
+        public string GetYouLose => YOULOSE;
         
 
         // Class constructor
