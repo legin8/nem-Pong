@@ -33,7 +33,7 @@ namespace Pong_NEM
         
 
         // Class Constructor
-        public Controller(Graphics graphics, Random random, Rectangle formRectangle, Form form1)
+        public Controller(Graphics graphics, Random random, Rectangle formRectangle)
         {
             scoreBoard = new ScoreBoard(formRectangle);
             playerPaddle = new PlayerPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle);
@@ -41,7 +41,7 @@ namespace Pong_NEM
             playerScore = new Score("Nigel", formRectangle.Left + 20);
             cpuScore = new Score("CPU", formRectangle.Right - 100);
             ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle);
-            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, form1);
+            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard);
             highScore = new HighScore();
         }
 

@@ -23,9 +23,12 @@ namespace Pong_NEM
     public class ScoreBoard
     {
         // Class Variables
+        private const string PLAYERSCORE = "You score 1", CPUSCORE = "Cpu score 1", YOUWIN = "You wins this round", YOULOSE = "Cpu wins this round";
+
         private Rectangle scoreBoardRectangle;
         private int scoreBoardHeight;
         private Brush brush = Brushes.Blue;
+        
 
         // Gets
         public Rectangle GetScoreBoardRectangle => scoreBoardRectangle;

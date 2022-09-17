@@ -29,14 +29,13 @@ namespace Pong_NEM
         private Paddle playerPaddle, cpuPaddle;
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
-        private Form form1;
         private bool hasScored;
 
         
 
         // Class Constructor
         public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
-            ScoreBoard scoreBoard, Form form1)
+            ScoreBoard scoreBoard)
         {
             this.graphics = graphics;
             this.ball = ball;
@@ -46,7 +45,6 @@ namespace Pong_NEM
             this.cpuScore = cpuScore;
             this.scoreBoard = scoreBoard;
             hasScored = false;
-            this.form1 = form1;
         }
 
         // Calls everything to be put on Screen
@@ -78,7 +76,7 @@ namespace Pong_NEM
 
         private void PlayGameScorePause()
         {
-
+            
         }
     }
 }

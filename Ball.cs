@@ -149,6 +149,7 @@ namespace Pong_NEM
             ballPositionY = formRectangle.Height /2;
             isReset = false;
             Console.Beep(2000, 200);
+
         }
     }
 }
