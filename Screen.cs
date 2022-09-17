@@ -29,12 +29,14 @@ namespace Pong_NEM
         private Paddle playerPaddle, cpuPaddle;
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
+        private Form form1;
+        private bool hasScored;
 
         
 
         // Class Constructor
         public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
-            ScoreBoard scoreBoard)
+            ScoreBoard scoreBoard, Form form1)
         {
             this.graphics = graphics;
             this.ball = ball;
@@ -43,10 +45,18 @@ namespace Pong_NEM
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
             this.scoreBoard = scoreBoard;
+            hasScored = false;
+            this.form1 = form1;
         }
 
         // Calls everything to be put on Screen
         public void DisplayScreen()
+        {
+            if (!hasScored) PlayGameRun();
+            if (hasScored) PlayGameScorePause();
+        }
+
+        private void PlayGameRun()
         {
             ball.UpdateBall();
 
@@ -64,6 +74,11 @@ namespace Pong_NEM
             // Paddles
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
+        }
+
+        private void PlayGameScorePause()
+        {
+
         }
     }
 }
