@@ -16,6 +16,7 @@ namespace Pong_NEM
 
         // Holds References
         private Rectangle formRectangle, scoreBoardRectangle;
+        private RandomColor randomColor;
         private Brush brush;
         private Score playerScore, cpuScore;
         private Paddle playerPaddle, cpuPaddle;
@@ -31,7 +32,7 @@ namespace Pong_NEM
 
         // Class Constructor
         public Ball(Rectangle clientRectangle, Rectangle formRectangle, Rectangle scoreBoardRectangle,
-            Score playerScore, Score cpuScore, Paddle playerPaddle, Paddle cpuPaddle)
+            Score playerScore, Score cpuScore, Paddle playerPaddle, Paddle cpuPaddle, RandomColor randomColor)
         {
             this.formRectangle = formRectangle;
             this.scoreBoardRectangle = scoreBoardRectangle;
@@ -39,11 +40,12 @@ namespace Pong_NEM
             this.cpuScore = cpuScore;
             this.playerPaddle = playerPaddle;
             this.cpuPaddle = cpuPaddle;
+            this.randomColor = randomColor;
             ballPositionX = clientRectangle.Width / 2;
             ballPositionY = clientRectangle.Height / 2;
             ballSpeedX = 20;
             ballSpeedY = 20;
-            brush = Brushes.Black;
+            brush = new SolidBrush(randomColor.GetColor());
         }
 
         // This will call Methods in ball Class to check and move Ball
