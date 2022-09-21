@@ -29,6 +29,7 @@ namespace Pong_NEM
         private Paddle playerPaddle, cpuPaddle;
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
+        private RandomColor randomColor;
         private bool hasScored;
         private int pauseTimer;
 
@@ -36,7 +37,7 @@ namespace Pong_NEM
 
         // Class Constructor
         public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
-            ScoreBoard scoreBoard)
+            ScoreBoard scoreBoard, RandomColor randomColor)
         {
             this.graphics = graphics;
             this.ball = ball;
@@ -45,6 +46,7 @@ namespace Pong_NEM
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
             this.scoreBoard = scoreBoard;
+            this.randomColor = randomColor;
             hasScored = false;
             pauseTimer = 0;
         }
