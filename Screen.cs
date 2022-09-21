@@ -69,9 +69,15 @@ namespace Pong_NEM
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
 
+            pausesScreenScore();
+       
+        }
+
+        private void pausesScreenScore()
+        {
             if (playerScore.HasScored || cpuScore.HasScored)
             {
-                if (playerScore.HasScored) graphics.DrawString($"1 point to {playerScore.GetName}", playerScore.GetFont, Brushes.Black ,formRectangle.Width/ 2, formRectangle.Height/ 2);
+                if (playerScore.HasScored) graphics.DrawString($"1 point to {playerScore.GetName}", playerScore.GetFont, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 2);
                 if (cpuScore.HasScored) graphics.DrawString($"1 point to {cpuScore.GetName}", playerScore.GetFont, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 2);
                 pauseTimer++;
                 if (pauseTimer > 20)
@@ -81,7 +87,6 @@ namespace Pong_NEM
                     pauseTimer = 0;
                 }
             }
-       
         }
 
 
