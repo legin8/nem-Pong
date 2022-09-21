@@ -93,6 +93,8 @@ namespace Pong_NEM
                 ballPositionX = formRectangle.Right - BALLSIZE;
                 isReset = true;
                 playerScore.CurrentScore++;
+                playerScore.HasScored = true;
+                cpuScore.HasScored = false;
             }
 
             // Left side Score and Reset
@@ -102,6 +104,8 @@ namespace Pong_NEM
                 ballPositionX = formRectangle.Left;
                 isReset = true;
                 cpuScore.CurrentScore++;
+                playerScore.HasScored = true;
+                cpuScore.HasScored = false;
             }
 
 

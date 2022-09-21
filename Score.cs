@@ -26,6 +26,7 @@ namespace Pong_NEM
         private const int NAMEOFYPOSITION = 20, SCOREOFYPOSITION = 60;
         private int score = 0, nameXPosition;
         private string name;
+        private bool hasScored;
 
         private Font font;
 
@@ -36,12 +37,13 @@ namespace Pong_NEM
         public int GetNameOfYPosition => NAMEOFYPOSITION;
         public int GetScoreOfYPosition => SCOREOFYPOSITION;
         public Font GetFont => font;
-
+        public bool HasScored { get => hasScored; set => hasScored = value; }
         public Score(string name, int nameXPosition)
         {
             this.name = name;
             this.nameXPosition = nameXPosition;
             font = new Font("Ariel", 20, FontStyle.Bold);
+            hasScored = false;
         }
 
     }

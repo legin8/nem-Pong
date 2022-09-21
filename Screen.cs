@@ -29,14 +29,12 @@ namespace Pong_NEM
         private Paddle playerPaddle, cpuPaddle;
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
-        private bool hasScored;
+        private Rectangle formRectangle;
         private int pauseTimer;
-
-        
 
         // Class Constructor
         public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
-            ScoreBoard scoreBoard)
+            ScoreBoard scoreBoard, Rectangle formRectangle)
         {
             this.graphics = graphics;
             this.ball = ball;
@@ -45,15 +43,16 @@ namespace Pong_NEM
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
             this.scoreBoard = scoreBoard;
-
-            hasScored = false;
+            this.formRectangle = formRectangle;
             pauseTimer = 0;
+
         }
 
         // Calls everything to be put on Screen
         public void DisplayScreen()
         {
-            if (!hasScored) ball.UpdateBall();
+
+            if (!playerScore.HasScored && !cpuScore.HasScored) ball.UpdateBall();
 
             graphics.Clear(Control.DefaultBackColor);
 
@@ -70,9 +69,17 @@ namespace Pong_NEM
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
 
-            if (hasScored)
+            if (playerScore.HasScored || cpuScore.HasScored)
             {
-                
+                if (playerScore.HasScored) graphics.DrawString($"1 point to {playerScore.GetName}", playerScore.GetFont, Brushes.Black ,formRectangle.Width/ 2, formRectangle.Height/ 2);
+                if (cpuScore.HasScored) graphics.DrawString($"1 point to {cpuScore.GetName}", playerScore.GetFont, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 2);
+                pauseTimer++;
+                if (pauseTimer > 20)
+                {
+                    playerScore.HasScored = false;
+                    cpuScore.HasScored = false;
+                    pauseTimer = 0;
+                }
             }
        
         }
