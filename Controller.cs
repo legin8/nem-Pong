@@ -29,12 +29,14 @@ namespace Pong_NEM
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
         private HighScore highScore;
+        private RandomColor randomColor;
 
         
 
         // Class Constructor
         public Controller(Graphics graphics, Random random, Rectangle formRectangle)
         {
+            randomColor = new RandomColor(random);
             scoreBoard = new ScoreBoard(formRectangle);
             playerPaddle = new PlayerPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle);
             cpuPaddle = new CpuPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle);
