@@ -30,12 +30,13 @@ namespace Pong_NEM
         public Brush GetBrush => brush;
 
         // Class Constructor
-        public Paddle(Rectangle formRectangle, Rectangle scoreBoardRectangle)
+        public Paddle(Rectangle formRectangle, Rectangle scoreBoardRectangle, RandomColor randomColor)
         {
             this.formRectangle = formRectangle;
             paddleWidth = 200;
             paddlePositionY = formRectangle.Bottom / 2;
             this.scoreBoardRectangle = scoreBoardRectangle;
+            brush = new SolidBrush(randomColor.GetColor());
         }
 
         public Rectangle GetPaddleRectangle => new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleWidth);

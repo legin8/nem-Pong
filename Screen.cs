@@ -45,6 +45,7 @@ namespace Pong_NEM
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
             this.scoreBoard = scoreBoard;
+
             hasScored = false;
             pauseTimer = 0;
         }

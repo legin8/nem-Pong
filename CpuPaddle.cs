@@ -23,11 +23,9 @@ namespace Pong_NEM
     {
 
         // Class Constructor
-        public CpuPaddle(Rectangle formRectangle, Rectangle scoreBoardRectangle) : base(formRectangle, scoreBoardRectangle)
+        public CpuPaddle(Rectangle formRectangle, Rectangle scoreBoardRectangle, RandomColor randomColor) : base(formRectangle, scoreBoardRectangle, randomColor)
         {
             paddleSide = formRectangle.Right - PADDLEWIDTH;
-            paddlePositionY = formRectangle.Bottom / 2;
-            brush = Brushes.Tomato;
         }
 
     }

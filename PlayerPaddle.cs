@@ -24,10 +24,9 @@ namespace Pong_NEM
 
         
         // Class Constructor for child class
-        public PlayerPaddle(Rectangle formRectangle, Rectangle scoreBoardRectangle) : base(formRectangle, scoreBoardRectangle)
+        public PlayerPaddle(Rectangle formRectangle, Rectangle scoreBoardRectangle, RandomColor randomColor) : base(formRectangle, scoreBoardRectangle, randomColor)
         {
             paddleSide = formRectangle.Left;
-            brush = Brushes.Tomato;
         }
 
         
