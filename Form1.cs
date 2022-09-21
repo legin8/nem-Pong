@@ -40,7 +40,7 @@ namespace Pong_NEM
             random = new Random();
             bufferImage = new Bitmap(Width, Height);
             bufferGraphics = Graphics.FromImage(bufferImage); 
-            controller = new Controller(bufferGraphics, random, ClientRectangle);
+            controller = new Controller(bufferGraphics, random, ClientRectangle, timer1);
 
         }
 
@@ -48,7 +48,7 @@ namespace Pong_NEM
         private void timer1_Tick(object sender, EventArgs e)
         {
             bufferGraphics.FillRectangle(Brushes.Black, 0, 0, Width, Height);
-            controller.RunGame();
+            controller.RunGame(timer1);
             graphics.DrawImage(bufferImage, 0, 0);
         }
 

@@ -33,6 +33,7 @@ namespace Pong_NEM
         // Gets and sets
         public int CurrentScore { get => score; set => score = value; }
         public string GetName => name;
+        public int GetScore => score;
         public int GetNameXPosition => nameXPosition;
         public int GetNameOfYPosition => NAMEOFYPOSITION;
         public int GetScoreOfYPosition => SCOREOFYPOSITION;
