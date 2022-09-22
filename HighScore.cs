@@ -23,6 +23,8 @@ namespace Pong_NEM
     {
         // Class Variables
         private string[] highScoreArr = new string[5];
+        private string newHighScore;
+        private bool winnerIsPlayer;
         private Score playerScore, cpuScore;
 
         // Class Constructor
@@ -49,6 +51,19 @@ namespace Pong_NEM
         {
             
         }
+
+        public void WhoWon(bool playerWin)
+        {
+            winnerIsPlayer = playerWin;
+        }
+
+
+        private string makeNewHighScore()
+        {
+            string winnerName = winnerIsPlayer ? playerScore.GetName : cpuScore.GetName;
+            return $"{playerScore.GetName}: {playerScore.GetScore}|| {cpuScore.GetName}: {cpuScore.GetScore} || Winner is {winnerName}";
+        }
+
 
     }
 }

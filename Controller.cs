@@ -55,7 +55,8 @@ namespace Pong_NEM
         // Will move the balls
         public void RunGame()
         {
-            
+            if (playerScore.GetScore == 10) highScore.WhoWon(true);
+            if (cpuScore.GetScore == 10) highScore.WhoWon(false);
             screen.DisplayScreen(isPaused);
             
         }
