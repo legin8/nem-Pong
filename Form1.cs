@@ -58,6 +58,7 @@ namespace Pong_NEM
             if (e.KeyCode == Keys.Down) controller.MovePaddleDown(1);
 
             if (e.KeyCode == Keys.Escape) controller.PauseGame();
+            if (e.KeyCode == Keys.N || e.KeyCode == Keys.R) controller = new Controller(bufferGraphics, random, ClientRectangle);
         }
     }
 }
