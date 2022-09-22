@@ -101,6 +101,13 @@ namespace Pong_NEM
             }
         }
 
+        private void WinnerOfGame()
+        {
+            graphics.Clear(Control.DefaultBackColor);
+
+            graphics.DrawString($"Winner is ", cpuScore.GetFont, Brushes.Black, new Point(formRectangle.Width / 3, formRectangle.Height / 2));
+        }
+
 
     }
 }
