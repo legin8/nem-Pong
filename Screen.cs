@@ -57,11 +57,12 @@ namespace Pong_NEM
         }
 
         // Calls everything to be put on Screen
-        public void DisplayScreen()
+        public void DisplayScreen(bool isPaused)
         {
             if (playerScore.GetScore == ENDGAMECONDITION || cpuScore.GetScore == ENDGAMECONDITION && pauseTimerDone) isEndOfGame = true;
-            if (!isEndOfGame) playRound();
-            if (isEndOfGame) WinnerOfGame();
+            if (!isEndOfGame && !isPaused) playRound();
+            if (!isEndOfGame && isPaused) menuScreen();
+            if (isEndOfGame) winnerOfGame();
        
         }
 
@@ -80,7 +81,7 @@ namespace Pong_NEM
             graphics.DrawString(playerScore.CurrentScore.ToString(), playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetScoreOfYPosition));
             graphics.DrawString(cpuScore.GetName, cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetNameOfYPosition));
             graphics.DrawString(cpuScore.CurrentScore.ToString(), cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetScoreOfYPosition));
-            graphics.DrawString(menu.GetMenuText, menu.GetFont, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 16); // menu
+            graphics.DrawString(menu.GetMenuText, menu.GetFontMainScreen, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 16); // menu
             // Paddles
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
@@ -107,7 +108,7 @@ namespace Pong_NEM
             }
         }
 
-        private void WinnerOfGame()
+        private void winnerOfGame()
         {
             if (playerScore.GetScore == ENDGAMECONDITION) winnerName = playerScore.GetName;
             if (cpuScore.GetScore == ENDGAMECONDITION) winnerName = cpuScore.GetName;
@@ -117,11 +118,12 @@ namespace Pong_NEM
         }
 
 
-        private void MenuScreen()
+        private void menuScreen()
         {
             graphics.Clear(Control.DefaultBackColor);
-
-            
+            graphics.DrawString(menu.GetResumeText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height/ 7);
+            graphics.DrawString(menu.GetNewGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 4);
+            graphics.DrawString(menu.GetRestartGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 3);
         }
 
     }

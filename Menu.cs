@@ -18,7 +18,8 @@ namespace Pong_NEM
         public string GetNewGameText => NEWGAMETEXT;
         public string GetRestartGameText => RESTARTGAMETEXT;
         public string GetResumeText => RESUMETEXT;
-        public Font GetFont => fontMainScreen;
+        public Font GetFontMainScreen => fontMainScreen;
+        public Font GetFontMenuScreen => fontMenuScreen;
         public Menu()
         {
             fontMainScreen = new Font("Ariel", 14, FontStyle.Bold);

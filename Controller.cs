@@ -56,7 +56,7 @@ namespace Pong_NEM
         public void RunGame()
         {
             
-            if (!isPaused) screen.DisplayScreen();
+            screen.DisplayScreen(isPaused);
             
         }
 
