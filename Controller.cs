@@ -30,6 +30,7 @@ namespace Pong_NEM
         private ScoreBoard scoreBoard;
         private HighScore highScore;
         private RandomColor randomColor;
+        private Menu menu;
         private bool isPaused;
 
 
@@ -38,13 +39,14 @@ namespace Pong_NEM
         public Controller(Graphics graphics, Random random, Rectangle formRectangle)
         {
             randomColor = new RandomColor(random);
+            menu = new Menu();
             scoreBoard = new ScoreBoard(formRectangle);
             playerPaddle = new PlayerPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle, randomColor);
             cpuPaddle = new CpuPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle, randomColor);
             playerScore = new Score("Nigel", formRectangle.Left + 20);
             cpuScore = new Score("CPU", formRectangle.Right - 100);
             ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle, randomColor);
-            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle);
+            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle, menu);
             highScore = new HighScore();
             isPaused = false;
         }

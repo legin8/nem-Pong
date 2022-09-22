@@ -30,6 +30,7 @@ namespace Pong_NEM
         private Paddle playerPaddle, cpuPaddle;
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
+        private Menu menu;
         private Rectangle formRectangle;
         private int pauseTimer;
         private bool pauseTimerDone, isEndOfGame;
@@ -39,7 +40,7 @@ namespace Pong_NEM
         public bool GetPauseTimerDone => pauseTimerDone;
         // Class Constructor
         public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
-            ScoreBoard scoreBoard, Rectangle formRectangle)
+            ScoreBoard scoreBoard, Rectangle formRectangle, Menu menu)
         {
             this.graphics = graphics;
             this.ball = ball;
@@ -49,10 +50,10 @@ namespace Pong_NEM
             this.cpuScore = cpuScore;
             this.scoreBoard = scoreBoard;
             this.formRectangle = formRectangle;
+            this.menu = menu;
             pauseTimer = 0;
             pauseTimerDone = true;
             isEndOfGame = false;
-
         }
 
         // Calls everything to be put on Screen
@@ -79,6 +80,7 @@ namespace Pong_NEM
             graphics.DrawString(playerScore.CurrentScore.ToString(), playerScore.GetFont, Brushes.Black, new Point(playerScore.GetNameXPosition, playerScore.GetScoreOfYPosition));
             graphics.DrawString(cpuScore.GetName, cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetNameOfYPosition));
             graphics.DrawString(cpuScore.CurrentScore.ToString(), cpuScore.GetFont, Brushes.Black, new Point(cpuScore.GetNameXPosition, cpuScore.GetScoreOfYPosition));
+            //graphics.DrawString(menu.GetMenuText, )
             // Paddles
             graphics.FillRectangle(playerPaddle.GetBrush, playerPaddle.GetPaddleRectangle); // Player Paddle
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
