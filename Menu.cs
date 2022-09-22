@@ -14,9 +14,10 @@ namespace Pong_NEM
         private Font font;
 
         public string GetMenuText => MENUTEXT;
+        public Font GetFont => font;
         public Menu()
         {
-            font = new Font("Ariel", 16, FontStyle.Bold);
+            font = new Font("Ariel", 14, FontStyle.Bold);
         }
 
     }
