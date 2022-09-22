@@ -22,28 +22,32 @@ namespace Pong_NEM
     public class HighScore
     {
         // Class Variables
-        private string[] highScoreList = new string[10];
+        private string[] highScoreArr = new string[5];
+        private Score playerScore, cpuScore;
 
         // Class Constructor
-        public HighScore()
+        public HighScore(Score playerScore, Score cpuScore)
         {
-
+            this.playerScore = playerScore;
+            this.cpuScore = cpuScore;
         }
 
         public void FillArrayFromFile()
         {
-            for (int i = 0; i < highScoreList.Length; i++)
+            StreamReader sr = new StreamReader(@"../../HighScores.txt");
+            int index = 0;
+
+            while (!sr.EndOfStream)
             {
-                // fill Array from the File here
+                highScoreArr[index] = sr.ReadLine();
+                index++;
             }
+            sr.Close();
         }
 
         public void SaveToTXTFile()
         {
-            for (int i = 0; i < highScoreList.Length; i++)
-            {
-
-            }
+            
         }
 
     }
