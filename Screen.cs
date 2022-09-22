@@ -24,7 +24,7 @@ namespace Pong_NEM
     public class Screen
     {
         // Class Variables
-        private const int ENDGAMECONDITION = 1;
+        private const int ENDGAMECONDITION = 10;
         private Graphics graphics;
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;

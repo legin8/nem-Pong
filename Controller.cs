@@ -30,6 +30,7 @@ namespace Pong_NEM
         private ScoreBoard scoreBoard;
         private HighScore highScore;
         private RandomColor randomColor;
+        private bool isPaused;
 
 
 
@@ -45,6 +46,7 @@ namespace Pong_NEM
             ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle, randomColor);
             screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle);
             highScore = new HighScore();
+            isPaused = false;
         }
 
         // This will be called by the timer
@@ -52,7 +54,7 @@ namespace Pong_NEM
         public void RunGame()
         {
             
-            screen.DisplayScreen();
+            if (!isPaused) screen.DisplayScreen();
             
         }
 
@@ -68,6 +70,11 @@ namespace Pong_NEM
         public void MovePaddleDown(int down)
         {
             playerPaddle.MoveCpuPaddle(down);
+        }
+
+        public void PauseGame()
+        {
+            isPaused = !isPaused;
         }
 
     }
