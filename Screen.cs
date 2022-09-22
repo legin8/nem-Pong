@@ -117,5 +117,12 @@ namespace Pong_NEM
         }
 
 
+        private void MenuScreen()
+        {
+            graphics.Clear(Control.DefaultBackColor);
+
+            
+        }
+
     }
 }

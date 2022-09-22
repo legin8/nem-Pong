@@ -12,13 +12,14 @@ namespace Pong_NEM
     {
         private const string MENUTEXT = "Press Esc Pause/Menu", NEWGAMETEXT = "Press N for a New Game", RESTARTGAMETEXT = "Press R to Restart",
             RESUMETEXT = "Press Esc To Resume";
-        private Font font1;
+        private Font fontMainScreen, fontMenuScreen;
 
         public string GetMenuText => MENUTEXT;
-        public Font GetFont => font1;
+        public Font GetFont => fontMainScreen;
         public Menu()
         {
-            font1 = new Font("Ariel", 14, FontStyle.Bold);
+            fontMainScreen = new Font("Ariel", 14, FontStyle.Bold);
+            fontMenuScreen = new Font("Ariel", 30, FontStyle.Bold);
         }
 
     }
