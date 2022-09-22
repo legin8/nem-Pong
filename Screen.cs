@@ -31,7 +31,10 @@ namespace Pong_NEM
         private ScoreBoard scoreBoard;
         private Rectangle formRectangle;
         private int pauseTimer;
+        private bool pauseTimerDone;
 
+        public int GetPauseTimer => pauseTimer;
+        public bool GetPauseTimerDone => pauseTimerDone;
         // Class Constructor
         public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
             ScoreBoard scoreBoard, Rectangle formRectangle)
@@ -45,13 +48,20 @@ namespace Pong_NEM
             this.scoreBoard = scoreBoard;
             this.formRectangle = formRectangle;
             pauseTimer = 0;
+            pauseTimerDone = true;
 
         }
 
         // Calls everything to be put on Screen
         public void DisplayScreen()
         {
+            playRound();
+            
+       
+        }
 
+        private void playRound()
+        {
             if (!playerScore.HasScored && !cpuScore.HasScored) ball.UpdateBall();
 
             graphics.Clear(Control.DefaultBackColor);
@@ -70,21 +80,23 @@ namespace Pong_NEM
             graphics.FillRectangle(cpuPaddle.GetBrush, cpuPaddle.GetPaddleRectangle); // Cpu Paddle
 
             pausesScreenScore();
-       
         }
 
         private void pausesScreenScore()
         {
             if (playerScore.HasScored || cpuScore.HasScored)
             {
-                if (playerScore.HasScored) graphics.DrawString($"1 point to {playerScore.GetName}", playerScore.GetFont, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 2);
-                if (cpuScore.HasScored) graphics.DrawString($"1 point to {cpuScore.GetName}", playerScore.GetFont, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 2);
+                if (playerScore.HasScored) graphics.DrawString($"{pauseTimer}1 point to {playerScore.GetName}", playerScore.GetFont, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 2);
+                if (cpuScore.HasScored) graphics.DrawString($"{pauseTimer}1 point to {cpuScore.GetName}", playerScore.GetFont, Brushes.Black, formRectangle.Width / 2, formRectangle.Height / 2);
                 pauseTimer++;
+                pauseTimerDone = false;
+
                 if (pauseTimer > 20)
                 {
                     playerScore.HasScored = false;
                     cpuScore.HasScored = false;
                     pauseTimer = 0;
+                    pauseTimerDone = true;
                 }
             }
         }

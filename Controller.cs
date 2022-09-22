@@ -31,13 +31,11 @@ namespace Pong_NEM
         private ScoreBoard scoreBoard;
         private HighScore highScore;
         private RandomColor randomColor;
-        private bool gameEnded;
-        private Timer timer1;
 
 
 
         // Class Constructor
-        public Controller(Graphics graphics, Random random, Rectangle formRectangle, Timer timer1)
+        public Controller(Graphics graphics, Random random, Rectangle formRectangle)
         {
             randomColor = new RandomColor(random);
             scoreBoard = new ScoreBoard(formRectangle);
@@ -48,17 +46,15 @@ namespace Pong_NEM
             ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle, randomColor);
             screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle);
             highScore = new HighScore();
-            gameEnded = false;
-            this.timer1 = timer1;
         }
 
         // This will be called by the timer
         // Will move the balls
-        public void RunGame(Timer timer)
+        public void RunGame()
         {
-            if (!gameEnded) screen.DisplayScreen();
-            if (gameEnded) endGame(timer);
-            if (playerScore.GetScore == ENDGAMECONDITION || cpuScore.GetScore == ENDGAMECONDITION) gameEnded = true;
+            
+            screen.DisplayScreen();
+            
         }
 
 
@@ -73,13 +69,6 @@ namespace Pong_NEM
         public void MovePaddleDown(int down)
         {
             playerPaddle.MoveCpuPaddle(down);
-        }
-
-        private void endGame(Timer timer)
-        {
-            if (playerScore.GetScore == ENDGAMECONDITION) MessageBox.Show($"{playerScore.GetName} Wins");
-            if (cpuScore.GetScore == ENDGAMECONDITION) MessageBox.Show($"{cpuScore.GetName} Wins");
-            timer.Stop();
         }
 
     }
