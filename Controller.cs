@@ -23,7 +23,6 @@ namespace Pong_NEM
     public class Controller
     {
         // Class Variables
-        private const int ENDGAMECONDITION = 1;
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
         private Screen screen;

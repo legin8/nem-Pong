@@ -24,6 +24,7 @@ namespace Pong_NEM
     public class Screen
     {
         // Class Variables
+        private const int ENDGAMECONDITION = 1;
         private Graphics graphics;
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
@@ -31,7 +32,8 @@ namespace Pong_NEM
         private ScoreBoard scoreBoard;
         private Rectangle formRectangle;
         private int pauseTimer;
-        private bool pauseTimerDone;
+        private bool pauseTimerDone, isEndOfGame;
+        private string winnerName;
 
         public int GetPauseTimer => pauseTimer;
         public bool GetPauseTimerDone => pauseTimerDone;
@@ -49,14 +51,16 @@ namespace Pong_NEM
             this.formRectangle = formRectangle;
             pauseTimer = 0;
             pauseTimerDone = true;
+            isEndOfGame = false;
 
         }
 
         // Calls everything to be put on Screen
         public void DisplayScreen()
         {
-            playRound();
-            
+            if (playerScore.GetScore == ENDGAMECONDITION || cpuScore.GetScore == ENDGAMECONDITION && pauseTimerDone) isEndOfGame = true;
+            if (!isEndOfGame) playRound();
+            if (isEndOfGame) WinnerOfGame();
        
         }
 
@@ -103,9 +107,11 @@ namespace Pong_NEM
 
         private void WinnerOfGame()
         {
+            if (playerScore.GetScore == ENDGAMECONDITION) winnerName = playerScore.GetName;
+            if (cpuScore.GetScore == ENDGAMECONDITION) winnerName = cpuScore.GetName;
             graphics.Clear(Control.DefaultBackColor);
 
-            graphics.DrawString($"Winner is ", cpuScore.GetFont, Brushes.Black, new Point(formRectangle.Width / 3, formRectangle.Height / 2));
+            graphics.DrawString($"Winner is {winnerName}.", cpuScore.GetFont, Brushes.Black, new Point(formRectangle.Width / 3, formRectangle.Height / 2));
         }
 
 
