@@ -15,6 +15,9 @@ namespace Pong_NEM
         private Font fontMainScreen, fontMenuScreen;
 
         public string GetMenuText => MENUTEXT;
+        public string GetNewGameText => NEWGAMETEXT;
+        public string GetRestartGameText => RESTARTGAMETEXT;
+        public string GetResumeText => RESUMETEXT;
         public Font GetFont => fontMainScreen;
         public Menu()
         {
