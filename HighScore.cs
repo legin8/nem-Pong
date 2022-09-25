@@ -22,8 +22,8 @@ namespace Pong_NEM
     public class HighScore
     {
         // Class Variables
+        private const int MAXSCORELIST = 5;
         private string[] highScoreArr = new string[5];
-        private string newHighScore;
         private bool winnerIsPlayer;
         private Score playerScore, cpuScore;
 
@@ -32,14 +32,17 @@ namespace Pong_NEM
         {
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
+            // for (int i = 0; i < highScoreArr.Length; i++) highScoreArr[i] = "...";
         }
 
         public void FillArrayFromFile()
         {
             StreamReader sr = new StreamReader(@"../../HighScores.txt");
             int index = 0;
+            highScoreArr[index] = makeNewHighScore();
+            index++;
 
-            while (!sr.EndOfStream)
+            while (index < MAXSCORELIST)
             {
                 highScoreArr[index] = sr.ReadLine();
                 index++;
@@ -49,7 +52,10 @@ namespace Pong_NEM
 
         public void SaveToTXTFile()
         {
-            
+            using (StreamWriter sr = new StreamWriter(@"../../HighScores.txt"))
+            {
+                foreach (string entry in highScoreArr) sr.WriteLine(entry);
+            }
         }
 
         public void WhoWon(bool playerWin)
