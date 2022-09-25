@@ -32,7 +32,7 @@ namespace Pong_NEM
         {
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
-            // for (int i = 0; i < highScoreArr.Length; i++) highScoreArr[i] = "...";
+            for (int i = 0; i < highScoreArr.Length; i++) highScoreArr[i] = "...";
         }
 
         public void FillArrayFromFile()
@@ -61,6 +61,8 @@ namespace Pong_NEM
         public void WhoWon(bool playerWin)
         {
             winnerIsPlayer = playerWin;
+            FillArrayFromFile();
+            SaveToTXTFile();
         }
 
 
