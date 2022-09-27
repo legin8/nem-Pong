@@ -126,5 +126,16 @@ namespace Pong_NEM
             graphics.DrawString(menu.GetRestartGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 3);
         }
 
+
+        private void highScores()
+        {
+            graphics.Clear(Control.DefaultBackColor);
+            graphics.DrawString(menu.GetResumeText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 7);
+            graphics.DrawString(menu.GetNewGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 6);
+            graphics.DrawString(menu.GetRestartGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 5);
+            graphics.DrawString(menu.GetNewGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 4);
+            graphics.DrawString(menu.GetRestartGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 3);
+        }
+
     }
 }
