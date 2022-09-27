@@ -27,6 +27,8 @@ namespace Pong_NEM
         private bool winnerIsPlayer;
         private Score playerScore, cpuScore;
 
+        public string[] HighScoreArr => highScoreArr;
+
         // Class Constructor
         public HighScore(Score playerScore, Score cpuScore)
         {

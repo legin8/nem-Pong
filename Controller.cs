@@ -31,7 +31,7 @@ namespace Pong_NEM
         private HighScore highScore;
         private RandomColor randomColor;
         private Menu menu;
-        private bool isPaused;
+        private bool isPaused, isPlayHighScore;
 
 
 
@@ -49,15 +49,21 @@ namespace Pong_NEM
             screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle, menu);
             highScore = new HighScore(playerScore, cpuScore);
             isPaused = false;
+            isPlayHighScore = false;
         }
 
         // This will be called by the timer
         // Will move the balls
         public void RunGame()
         {
-            if (playerScore.GetScore == 10) highScore.WhoWon(true);
-            if (cpuScore.GetScore == 10) highScore.WhoWon(false);
-            screen.DisplayScreen(isPaused);
+            if (!isPlayHighScore)
+            {
+                if (playerScore.GetScore == 10) highScore.WhoWon(true);
+                if (cpuScore.GetScore == 10) highScore.WhoWon(false);
+                screen.DisplayScreen(isPaused);
+            }
+
+            if (isPlayHighScore) screen.HighScores();
             
         }
 

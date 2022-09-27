@@ -127,7 +127,7 @@ namespace Pong_NEM
         }
 
 
-        private void highScores()
+        public void HighScores()
         {
             graphics.Clear(Control.DefaultBackColor);
             graphics.DrawString(menu.GetResumeText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 7);
