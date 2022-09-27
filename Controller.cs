@@ -33,6 +33,8 @@ namespace Pong_NEM
         private Menu menu;
         private bool isPaused, isPlayHighScore, isHighScoreRunOnce;
 
+        public bool IsPlayHighScore { get => isPlayHighScore; set => isPlayHighScore = value; }
+
 
 
         // Class Constructor
@@ -46,7 +48,7 @@ namespace Pong_NEM
             playerScore = new Score("Nigel", formRectangle.Left + 20);
             cpuScore = new Score("CPU", formRectangle.Right - 100);
             ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle, randomColor);
-            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle, menu);
+            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle, menu, this);
             highScore = new HighScore(playerScore, cpuScore);
             isPaused = false;
             isPlayHighScore = false;

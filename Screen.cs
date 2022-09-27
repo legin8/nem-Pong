@@ -24,13 +24,14 @@ namespace Pong_NEM
     public class Screen
     {
         // Class Variables
-        private const int ENDGAMECONDITION = 10;
+        private const int ENDGAMECONDITION = 1;
         private Graphics graphics;
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
         private Score playerScore, cpuScore;
         private ScoreBoard scoreBoard;
         private Menu menu;
+        private Controller controller;
         private Rectangle formRectangle;
         private int pauseTimer;
         private bool pauseTimerDone, isEndOfGame;
@@ -40,7 +41,7 @@ namespace Pong_NEM
         public bool GetPauseTimerDone => pauseTimerDone;
         // Class Constructor
         public Screen(Graphics graphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
-            ScoreBoard scoreBoard, Rectangle formRectangle, Menu menu)
+            ScoreBoard scoreBoard, Rectangle formRectangle, Menu menu, Controller controller)
         {
             this.graphics = graphics;
             this.ball = ball;
@@ -54,6 +55,7 @@ namespace Pong_NEM
             pauseTimer = 0;
             pauseTimerDone = true;
             isEndOfGame = false;
+            this.controller = controller;
         }
 
         // Calls everything to be put on Screen
@@ -115,6 +117,12 @@ namespace Pong_NEM
             graphics.Clear(Control.DefaultBackColor);
 
             graphics.DrawString($"Winner is {winnerName}.", cpuScore.GetFont, Brushes.Black, new Point(formRectangle.Width / 3, formRectangle.Height / 2));
+            pauseTimer++;
+            if (pauseTimer > 20)
+            {
+                pauseTimer = 0;
+                controller.IsPlayHighScore = true;
+            }
         }
 
 
