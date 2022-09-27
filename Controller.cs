@@ -31,7 +31,7 @@ namespace Pong_NEM
         private HighScore highScore;
         private RandomColor randomColor;
         private Menu menu;
-        private bool isPaused, isPlayHighScore;
+        private bool isPaused, isPlayHighScore, isHighScoreRunOnce;
 
 
 
@@ -50,6 +50,7 @@ namespace Pong_NEM
             highScore = new HighScore(playerScore, cpuScore);
             isPaused = false;
             isPlayHighScore = false;
+            isHighScoreRunOnce = false;
         }
 
         // This will be called by the timer
@@ -58,8 +59,16 @@ namespace Pong_NEM
         {
             if (!isPlayHighScore)
             {
-                if (playerScore.GetScore == 10) highScore.WhoWon(true);
-                if (cpuScore.GetScore == 10) highScore.WhoWon(false);
+                if (playerScore.GetScore == 10 && !isHighScoreRunOnce)
+                {
+                    highScore.WhoWon(true);
+                    isHighScoreRunOnce = true;
+                }
+                if (cpuScore.GetScore == 10 && !isHighScoreRunOnce)
+                {
+                    highScore.WhoWon(false);
+                    isHighScoreRunOnce = true;
+                }
                 screen.DisplayScreen(isPaused);
             }
 
