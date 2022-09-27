@@ -34,7 +34,7 @@ namespace Pong_NEM
         {
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
-            for (int i = 0; i < highScoreArr.Length; i++) highScoreArr[i] = "...";
+            //for (int i = 0; i < highScoreArr.Length; i++) highScoreArr[i] = "...";
         }
 
         public void FillArrayFromFile()
