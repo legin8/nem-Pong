@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Pong_NEM.Ball">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAASgAACACEAIQgoAwAAgAAABAgABAgAAAAIwA=</HashCode>
+      <FileName>Ball.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.Controller">
+    <Position X="11" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAgASCAAAECEAABAIIwAIIAAAAAAAAQAAAIAIAA=</HashCode>
+      <FileName>Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.CpuPaddle">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CpuPaddle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.Form1">
+    <Position X="12.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAADAAAAEAAgCAAAECAAAAIAgAAAQAAAAAAAA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.HighScore">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAgCEAAAAAAAAIAAAAAAAQAAiAEAAEAA=</HashCode>
+      <FileName>HighScore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.Menu">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAIwAAAQEAAAAAACAQAAAAAAIAIAAACAAAAA=</HashCode>
+      <FileName>Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.Paddle">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAIAAgAAAQAAAACAAAIAEAIAAAEgAAAgAAAEAAA=</HashCode>
+      <FileName>Paddle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.PlayerPaddle">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerPaddle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.RandomColor">
+    <Position X="12.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAACAAAQAAAAAAAA=</HashCode>
+      <FileName>RandomColor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.Score">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAQAAEAAgAAAAIAgAAYEgEAAAAAACAgAACBAA=</HashCode>
+      <FileName>Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.ScoreBoard">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAAoQAQAgAAAgEAAAAAAAAAGQAAAAAAAAAAAQ=</HashCode>
+      <FileName>ScoreBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pong_NEM.Screen">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAkAAAQAIAAEGEEBACYIgAIACCAAggAAAAQIAAAAQ=</HashCode>
+      <FileName>Screen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
