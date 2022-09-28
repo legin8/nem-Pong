@@ -33,7 +33,7 @@ namespace Pong_NEM
             random = new Random();
             graphics = CreateGraphics();
             bufferImage = new Bitmap(Width, Height);
-            bufferGraphics = Graphics.FromImage(bufferImage); 
+            bufferGraphics = Graphics.FromImage(bufferImage);
             controller = new Controller(bufferGraphics, random, ClientRectangle);
         }
 

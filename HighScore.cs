@@ -54,7 +54,7 @@ namespace Pong_NEM
         public void SaveToTXTFile()
         {
             StreamWriter sr = new StreamWriter(@"../../HighScores.txt");
-            
+
             for (int i = 0; i < highScoreArr.Length; i++)
             {
                 sr.WriteLine(highScoreArr[i]);

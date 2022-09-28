@@ -31,7 +31,7 @@ namespace Pong_NEM
         private int ballSpeedX, ballSpeedY;
         private bool ballXGoUp = true, ballYGoUp = true, isReset = false;
         private int ballPositionX, ballPositionY;
-        
+
         // Gets and Sets
         public Brush GetBrush => brush;
 
@@ -69,18 +69,21 @@ namespace Pong_NEM
             if (isReset)
             {
                 ResetBall();
-            } else
+            }
+            else
             {
                 MoveBall();
                 SideBounce();
             }
 
             // This Will move the player paddle under the conditions
-            if (ballPositionX > formRectangle.Width / 2) {
+            if (ballPositionX > formRectangle.Width / 2)
+            {
                 if (ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom)
                 {
                     cpuPaddle.MoveCpuPaddle(0);
-                } else
+                }
+                else
                 {
                     cpuPaddle.MoveCpuPaddle(1);
                 }
@@ -93,7 +96,7 @@ namespace Pong_NEM
             // X axis
             if (ballXGoUp) ballPositionX += ballSpeedX;
             if (!ballXGoUp) ballPositionX -= ballSpeedX;
-            
+
             // Y axis
             if (ballYGoUp) ballPositionY += ballSpeedY;
             if (!ballYGoUp) ballPositionY -= ballSpeedY;
@@ -129,7 +132,7 @@ namespace Pong_NEM
             // Cpu Paddle Bounce
             if (ballPositionX >= cpuPaddle.GetPaddleRectangle.Left - BALLSIZE && ballPositionX <= cpuPaddle.GetPaddleRectangle.Right - BALLSIZE)
             {
-                if (ballPositionY >= cpuPaddle.GetPaddleRectangle.Top - BALLSIZE && ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom - BALLSIZE )
+                if (ballPositionY >= cpuPaddle.GetPaddleRectangle.Top - BALLSIZE && ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom - BALLSIZE)
                 {
                     ballXGoUp = false;
                     ballPositionX = cpuPaddle.GetPaddleRectangle.Left - BALLSIZE;
@@ -137,7 +140,7 @@ namespace Pong_NEM
                     Console.Beep(4000, 200);
                 }
             }
-            
+
             // Player Paddle Bounce
             if (ballPositionX <= playerPaddle.GetPaddleRectangle.Right && ballPositionX >= playerPaddle.GetPaddleRectangle.Left)
             {
@@ -169,11 +172,11 @@ namespace Pong_NEM
             }
         }
 
-       // This is called to reset the ball position
+        // This is called to reset the ball position
         public void ResetBall()
         {
             ballPositionX = formRectangle.Width / 2;
-            ballPositionY = formRectangle.Height /2;
+            ballPositionY = formRectangle.Height / 2;
             isReset = false;
             playerSound.Play();
         }

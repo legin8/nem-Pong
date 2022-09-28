@@ -48,7 +48,7 @@ namespace Pong_NEM
             ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle, randomColor, random);
             highScore = new HighScore(playerScore, cpuScore);
             screen = new Screen(bufferGraphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle, menu, this, highScore);
-            
+
             isPaused = false;
             isPlayHighScore = false;
             isHighScoreRunOnce = false;

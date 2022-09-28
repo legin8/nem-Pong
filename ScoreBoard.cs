@@ -25,7 +25,7 @@ namespace Pong_NEM
         private Brush brush = Brushes.Blue;
 
         private int scoreBoardHeight;
-        
+
         // Gets
         public Rectangle GetScoreBoardRectangle => scoreBoardRectangle;
         public Brush GetScoreBoardBrush => brush;
@@ -33,7 +33,7 @@ namespace Pong_NEM
         public string GetCpuScore => CPUSCORE;
         public string GetYouWin => YOUWIN;
         public string GetYouLose => YOULOSE;
-        
+
 
         // Class constructor
         public ScoreBoard(Rectangle formRectangle)
