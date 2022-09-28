@@ -20,6 +20,7 @@ namespace Pong_NEM
         private Brush brush;
         private Score playerScore, cpuScore;
         private Paddle playerPaddle, cpuPaddle;
+        
 
         // This class variables
         private int ballSpeedX, ballSpeedY;

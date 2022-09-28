@@ -23,6 +23,7 @@ namespace Pong_NEM
     public class Controller
     {
         // Class Variables
+        private const int ENDGAMECONDITION = 1;
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
         private Screen screen;
@@ -34,6 +35,7 @@ namespace Pong_NEM
         private bool isPaused, isPlayHighScore, isHighScoreRunOnce;
 
         public bool IsPlayHighScore { get => isPlayHighScore; set => isPlayHighScore = value; }
+        public int GetENDGAMECONDITION => ENDGAMECONDITION;
 
 
 
@@ -62,12 +64,12 @@ namespace Pong_NEM
         {
             if (!isPlayHighScore)
             {
-                if (playerScore.GetScore == 10 && !isHighScoreRunOnce)
+                if (playerScore.GetScore == ENDGAMECONDITION && !isHighScoreRunOnce)
                 {
                     highScore.WhoWon(true);
                     isHighScoreRunOnce = true;
                 }
-                if (cpuScore.GetScore == 10 && !isHighScoreRunOnce)
+                if (cpuScore.GetScore == ENDGAMECONDITION && !isHighScoreRunOnce)
                 {
                     highScore.WhoWon(false);
                     isHighScoreRunOnce = true;

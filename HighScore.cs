@@ -34,7 +34,6 @@ namespace Pong_NEM
         {
             this.playerScore = playerScore;
             this.cpuScore = cpuScore;
-            //for (int i = 0; i < highScoreArr.Length; i++) highScoreArr[i] = "...";
         }
 
         public void FillArrayFromFile()
@@ -54,10 +53,13 @@ namespace Pong_NEM
 
         public void SaveToTXTFile()
         {
-            using (StreamWriter sr = new StreamWriter(@"../../HighScores.txt"))
+            StreamWriter sr = new StreamWriter(@"../../HighScores.txt");
+            
+            for (int i = 0; i < highScoreArr.Length; i++)
             {
-                foreach (string entry in highScoreArr) sr.WriteLine(entry);
+                sr.WriteLine(highScoreArr[i]);
             }
+            sr.Close();
         }
 
         public void WhoWon(bool playerWin)
@@ -71,7 +73,9 @@ namespace Pong_NEM
         private string makeNewHighScore()
         {
             string winnerName = winnerIsPlayer ? playerScore.GetName : cpuScore.GetName;
-            return $"{playerScore.GetName}: {playerScore.GetScore}|| {cpuScore.GetName}: {cpuScore.GetScore} || Winner is {winnerName}";
+            Console.WriteLine($"{playerScore.GetName}: {playerScore.GetScore} || {cpuScore.GetName}: {cpuScore.GetScore} || Winner is {winnerName}");
+            return $"{playerScore.GetName}: {playerScore.GetScore} || {cpuScore.GetName}: {cpuScore.GetScore} || Winner is {winnerName}";
+            
         }
 
 

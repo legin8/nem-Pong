@@ -24,7 +24,7 @@ namespace Pong_NEM
     public class Screen
     {
         // Class Variables
-        private const int ENDGAMECONDITION = 1;
+
         private Graphics graphics;
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
@@ -63,7 +63,7 @@ namespace Pong_NEM
         // Calls everything to be put on Screen
         public void DisplayScreen(bool isPaused)
         {
-            if (playerScore.GetScore == ENDGAMECONDITION || cpuScore.GetScore == ENDGAMECONDITION && pauseTimerDone) isEndOfGame = true;
+            if (playerScore.GetScore == controller.GetENDGAMECONDITION || cpuScore.GetScore == controller.GetENDGAMECONDITION && pauseTimerDone) isEndOfGame = true;
             if (!isEndOfGame && !isPaused) playRound();
             if (!isEndOfGame && isPaused) menuScreen();
             if (isEndOfGame) winnerOfGame();
@@ -114,8 +114,8 @@ namespace Pong_NEM
 
         private void winnerOfGame()
         {
-            if (playerScore.GetScore == ENDGAMECONDITION) winnerName = playerScore.GetName;
-            if (cpuScore.GetScore == ENDGAMECONDITION) winnerName = cpuScore.GetName;
+            if (playerScore.GetScore == controller.GetENDGAMECONDITION) winnerName = playerScore.GetName;
+            if (cpuScore.GetScore == controller.GetENDGAMECONDITION) winnerName = cpuScore.GetName;
             graphics.Clear(Control.DefaultBackColor);
 
             graphics.DrawString($"Winner is {winnerName}.", cpuScore.GetFont, Brushes.Black, new Point(formRectangle.Width / 3, formRectangle.Height / 2));
@@ -143,10 +143,11 @@ namespace Pong_NEM
             string[] arr = highScore.HighScoreArr;
             graphics.Clear(Control.DefaultBackColor);
             graphics.DrawString(arr[0], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 7);
-            graphics.DrawString(arr[1], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 6);
-            graphics.DrawString(arr[2], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 5);
-            graphics.DrawString(arr[3], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 4);
-            graphics.DrawString(arr[4], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 3);
+            graphics.DrawString(arr[1], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, (formRectangle.Height / 7) + 50);
+            graphics.DrawString(arr[2], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, (formRectangle.Height / 7) + 100);
+            graphics.DrawString(arr[3], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, (formRectangle.Height / 7) + 150);
+            graphics.DrawString(arr[4], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, (formRectangle.Height / 7) + 200);
+            graphics.DrawString(menu.GetNewGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, (formRectangle.Height / 7) + 300);
         }
 
     }
