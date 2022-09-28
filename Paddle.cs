@@ -10,12 +10,7 @@ Known Bugs:
 Additional Features:
 */
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pong_NEM
 {
@@ -27,32 +22,39 @@ namespace Pong_NEM
         protected Rectangle formRectangle, scoreBoardRectangle;
         protected int paddlePositionY, paddleWidth, paddleSide;
 
+        // Getter
         public Brush GetBrush => brush;
+
 
         // Class Constructor
         public Paddle(Rectangle formRectangle, Rectangle scoreBoardRectangle, RandomColor randomColor)
         {
             this.formRectangle = formRectangle;
+            this.scoreBoardRectangle = scoreBoardRectangle;
             paddleWidth = 200;
             paddlePositionY = formRectangle.Bottom / 2;
-            this.scoreBoardRectangle = scoreBoardRectangle;
             brush = new SolidBrush(randomColor.GetColor());
         }
 
+
+        // Returns the current rectangle
         public Rectangle GetPaddleRectangle => new Rectangle(paddleSide, paddlePositionY, PADDLEWIDTH, paddleWidth);
 
+        // This calls the up and down methods that moves the paddle
         public void MoveCpuPaddle(int upOrDown)
         {
             if (upOrDown == 0) PaddleYUp();
             if (upOrDown == 1) PaddleYDown();
         }
 
+        // This moves paddle up but won't let it go into the score board
         public void PaddleYUp()
         {
             if (paddlePositionY > scoreBoardRectangle.Top) paddlePositionY -= 10;
             if (paddlePositionY < scoreBoardRectangle.Bottom) paddlePositionY = scoreBoardRectangle.Bottom;
         }
 
+        // This moves the paddle down but won't let it go below the screen
         public void PaddleYDown()
         {
             if (paddlePositionY < formRectangle.Bottom - paddleWidth) paddlePositionY += 10;

@@ -10,26 +10,22 @@ Known Bugs:
 Additional Features:
 */
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Pong_NEM
 {
     public class ScoreBoard
     {
         // Class Variables
-        private const string PLAYERSCORE = "You score 1", CPUSCORE = "Cpu score 1", YOUWIN = "You wins this round", YOULOSE = "Cpu wins this round";
-
+        private const string PLAYERSCORE = "You score 1",
+            CPUSCORE = "Cpu score 1",
+            YOUWIN = "You wins this round",
+            YOULOSE = "Cpu wins this round";
         private Rectangle scoreBoardRectangle;
-        private int scoreBoardHeight;
         private Brush brush = Brushes.Blue;
-        
 
+        private int scoreBoardHeight;
+        
         // Gets
         public Rectangle GetScoreBoardRectangle => scoreBoardRectangle;
         public Brush GetScoreBoardBrush => brush;
@@ -45,6 +41,5 @@ namespace Pong_NEM
             scoreBoardHeight = formRectangle.Height / 6;
             scoreBoardRectangle = new Rectangle(formRectangle.Left, formRectangle.Top, formRectangle.Width, scoreBoardHeight);
         }
-
     }
 }
