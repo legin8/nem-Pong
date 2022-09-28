@@ -11,12 +11,7 @@ Additional Features:
 */
 
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Pong_NEM
 {
@@ -24,6 +19,7 @@ namespace Pong_NEM
     {
         // Class Variables
         private const int ENDGAMECONDITION = 10;
+
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
         private Screen screen;
@@ -32,11 +28,11 @@ namespace Pong_NEM
         private HighScore highScore;
         private RandomColor randomColor;
         private Menu menu;
-        private bool isPaused, isPlayHighScore, isHighScoreRunOnce;
 
+        private bool isPaused, isPlayHighScore, isHighScoreRunOnce;
+        // Gets and Sets
         public bool IsPlayHighScore { get => isPlayHighScore; set => isPlayHighScore = value; }
         public int GetENDGAMECONDITION => ENDGAMECONDITION;
-
 
 
         // Class Constructor
@@ -58,10 +54,12 @@ namespace Pong_NEM
             isHighScoreRunOnce = false;
         }
 
+
         // This will be called by the timer
-        // Will move the balls
+        // Will run the display for pausing the game and running the match
         public void RunGame()
         {
+            // This runs if highscore isn't going to play, the 2 statments inside can only be run once
             if (!isPlayHighScore)
             {
                 if (playerScore.GetScore == ENDGAMECONDITION && !isHighScoreRunOnce)
@@ -77,28 +75,28 @@ namespace Pong_NEM
                 screen.DisplayScreen(isPaused);
             }
 
+            // This runs if the game is over to display the highscore
             if (isPlayHighScore) screen.HighScores();
-            
         }
 
 
 
-        // Moves Player paddle up
+        // Tells player paddle to moves paddle up
         public void MovePaddleUp(int up)
         {
             playerPaddle.MoveCpuPaddle(up);
         }
 
-        // Moves Player paddle down
+        // Tells player paddle to moves paddle down
         public void MovePaddleDown(int down)
         {
             playerPaddle.MoveCpuPaddle(down);
         }
 
+        // This is called by a keydown to pause or resume the game
         public void PauseGame()
         {
             isPaused = !isPaused;
         }
-
     }
 }

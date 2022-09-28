@@ -25,6 +25,7 @@ namespace Pong_NEM
         private Graphics bufferGraphics;
         public Controller controller;
 
+
         // Class Form Constructor
         public Form1()
         {
@@ -35,6 +36,7 @@ namespace Pong_NEM
             bufferGraphics = Graphics.FromImage(bufferImage); 
             controller = new Controller(bufferGraphics, random, ClientRectangle);
         }
+
 
         // Event handler for timer, prints the screen once it gets to the last line.
         private void timer1_Tick(object sender, EventArgs e)
