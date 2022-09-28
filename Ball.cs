@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Pong_NEM
 {
@@ -20,7 +21,7 @@ namespace Pong_NEM
         private Brush brush;
         private Score playerScore, cpuScore;
         private Paddle playerPaddle, cpuPaddle;
-        
+        private SoundPlayer playerSound = new SoundPlayer(Properties.Resources.fart);
 
         // This class variables
         private int ballSpeedX, ballSpeedY;
@@ -155,7 +156,7 @@ namespace Pong_NEM
             ballPositionX = formRectangle.Width / 2;
             ballPositionY = formRectangle.Height /2;
             isReset = false;
-            Console.Beep(2000, 200);
+            playerSound.Play();
 
         }
     }
