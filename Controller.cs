@@ -40,7 +40,7 @@ namespace Pong_NEM
 
 
         // Class Constructor
-        public Controller(Graphics graphics, Random random, Rectangle formRectangle)
+        public Controller(Graphics bufferGraphics, Random random, Rectangle formRectangle)
         {
             randomColor = new RandomColor(random);
             menu = new Menu();
@@ -51,7 +51,7 @@ namespace Pong_NEM
             cpuScore = new Score("CPU", formRectangle.Right - 100);
             ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle, randomColor);
             highScore = new HighScore(playerScore, cpuScore);
-            screen = new Screen(graphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle, menu, this, highScore);
+            screen = new Screen(bufferGraphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle, menu, this, highScore);
             
             isPaused = false;
             isPlayHighScore = false;

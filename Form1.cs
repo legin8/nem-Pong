@@ -11,13 +11,7 @@ Additional Features:
 */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Pong_NEM
@@ -25,26 +19,24 @@ namespace Pong_NEM
     public partial class Form1 : Form
     {
         // Class Variables
-        public Controller controller;
-        private Bitmap bufferImage;
-        private Graphics graphics;
-        private Graphics bufferGraphics;
         private Random random;
-
+        private Graphics graphics;
+        private Bitmap bufferImage;
+        private Graphics bufferGraphics;
+        public Controller controller;
 
         // Class Form Constructor
         public Form1()
         {
             InitializeComponent();
-            graphics = CreateGraphics();
             random = new Random();
+            graphics = CreateGraphics();
             bufferImage = new Bitmap(Width, Height);
             bufferGraphics = Graphics.FromImage(bufferImage); 
             controller = new Controller(bufferGraphics, random, ClientRectangle);
-
         }
 
-        // Event handler for timer
+        // Event handler for timer, prints the screen once it gets to the last line.
         private void timer1_Tick(object sender, EventArgs e)
         {
             bufferGraphics.FillRectangle(Brushes.Black, 0, 0, Width, Height);
@@ -52,6 +44,7 @@ namespace Pong_NEM
             graphics.DrawImage(bufferImage, 0, 0);
         }
 
+        // Event handler for keydown events, moving paddle and reset/ new game
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up) controller.MovePaddleUp(0);
