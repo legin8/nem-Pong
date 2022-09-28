@@ -18,7 +18,6 @@ namespace Pong_NEM
     public class Screen
     {
         // Class Variables
-
         private Graphics bufferGraphics;
         private Ball ball;
         private Paddle playerPaddle, cpuPaddle;
@@ -32,8 +31,7 @@ namespace Pong_NEM
         private bool pauseTimerDone, isEndOfGame;
         private string winnerName;
 
-        public int GetPauseTimer => pauseTimer;
-        public bool GetPauseTimerDone => pauseTimerDone;
+
         // Class Constructor
         public Screen(Graphics bufferGraphics, Ball ball, Paddle playerPaddle, Paddle cpuPaddle, Score playerScore, Score cpuScore,
             ScoreBoard scoreBoard, Rectangle formRectangle, Menu menu, Controller controller, HighScore highScore)
@@ -47,25 +45,27 @@ namespace Pong_NEM
             this.scoreBoard = scoreBoard;
             this.formRectangle = formRectangle;
             this.menu = menu;
+            this.controller = controller;
+            this.highScore = highScore;
             pauseTimer = 0;
             pauseTimerDone = true;
             isEndOfGame = false;
-            this.controller = controller;
-            this.highScore = highScore;
         }
 
-        // Calls everything to be put on Screen
+
+        // Calls everything to be put on Screen during a match
         public void DisplayScreen(bool isPaused)
         {
             if (playerScore.GetScore == controller.GetENDGAMECONDITION || cpuScore.GetScore == controller.GetENDGAMECONDITION && pauseTimerDone) isEndOfGame = true;
             if (!isEndOfGame && !isPaused) playRound();
             if (!isEndOfGame && isPaused) menuScreen();
             if (isEndOfGame) winnerOfGame();
-       
         }
 
+        // displays and runs the game
         private void playRound()
         {
+            // This is only run when we want the ball to move
             if (!playerScore.HasScored && !cpuScore.HasScored) ball.UpdateBall();
 
             bufferGraphics.Clear(Control.DefaultBackColor);
@@ -87,6 +87,7 @@ namespace Pong_NEM
             pausesScreenScore();
         }
 
+        // This pauses the game once a point is scored
         private void pausesScreenScore()
         {
             if (playerScore.HasScored || cpuScore.HasScored)
@@ -106,12 +107,13 @@ namespace Pong_NEM
             }
         }
 
+        // Displays the winner of the Game
         private void winnerOfGame()
         {
             if (playerScore.GetScore == controller.GetENDGAMECONDITION) winnerName = playerScore.GetName;
             if (cpuScore.GetScore == controller.GetENDGAMECONDITION) winnerName = cpuScore.GetName;
-            bufferGraphics.Clear(Control.DefaultBackColor);
 
+            bufferGraphics.Clear(Control.DefaultBackColor);
             bufferGraphics.DrawString($"Winner is {winnerName}.", cpuScore.GetFont, Brushes.Black, new Point(formRectangle.Width / 3, formRectangle.Height / 2));
             pauseTimer++;
 
@@ -122,7 +124,7 @@ namespace Pong_NEM
             }
         }
 
-
+        // Displays the menu screen
         private void menuScreen()
         {
             bufferGraphics.Clear(Control.DefaultBackColor);
@@ -131,7 +133,7 @@ namespace Pong_NEM
             bufferGraphics.DrawString(menu.GetRestartGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, formRectangle.Height / 3);
         }
 
-
+        // Displays this game and the last 4 games results
         public void HighScores()
         {
             string[] arr = highScore.HighScoreArr;
@@ -143,6 +145,5 @@ namespace Pong_NEM
             bufferGraphics.DrawString(arr[4], menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, (formRectangle.Height / 7) + 200);
             bufferGraphics.DrawString(menu.GetNewGameText, menu.GetFontMenuScreen, Brushes.Black, formRectangle.Width / 3, (formRectangle.Height / 7) + 300);
         }
-
     }
 }

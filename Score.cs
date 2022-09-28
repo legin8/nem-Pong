@@ -10,35 +10,32 @@ Known Bugs:
 Additional Features:
 */
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pong_NEM
 {
     public class Score
     {
-        // Abstract Class
         // Class Variables
         private const int NAMEOFYPOSITION = 20, SCOREOFYPOSITION = 60;
+        private Font font;
+
         private int score = 0, nameXPosition;
         private string name;
         private bool hasScored;
 
-        private Font font;
-
         // Gets and sets
         public int CurrentScore { get => score; set => score = value; }
+        public bool HasScored { get => hasScored; set => hasScored = value; }
         public string GetName => name;
         public int GetScore => score;
         public int GetNameXPosition => nameXPosition;
         public int GetNameOfYPosition => NAMEOFYPOSITION;
         public int GetScoreOfYPosition => SCOREOFYPOSITION;
         public Font GetFont => font;
-        public bool HasScored { get => hasScored; set => hasScored = value; }
+
+
+        // Class Constructor
         public Score(string name, int nameXPosition)
         {
             this.name = name;
@@ -46,6 +43,5 @@ namespace Pong_NEM
             font = new Font("Ariel", 20, FontStyle.Bold);
             hasScored = false;
         }
-
     }
 }

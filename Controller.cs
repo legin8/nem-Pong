@@ -43,9 +43,9 @@ namespace Pong_NEM
             scoreBoard = new ScoreBoard(formRectangle);
             playerPaddle = new PlayerPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle, randomColor);
             cpuPaddle = new CpuPaddle(formRectangle, scoreBoard.GetScoreBoardRectangle, randomColor);
-            playerScore = new Score("Nigel", formRectangle.Left + 20);
+            playerScore = new Score("PLAYER", formRectangle.Left + 20);
             cpuScore = new Score("CPU", formRectangle.Right - 100);
-            ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle, randomColor);
+            ball = new Ball(formRectangle, formRectangle, scoreBoard.GetScoreBoardRectangle, playerScore, cpuScore, playerPaddle, cpuPaddle, randomColor, random);
             highScore = new HighScore(playerScore, cpuScore);
             screen = new Screen(bufferGraphics, ball, playerPaddle, cpuPaddle, playerScore, cpuScore, scoreBoard, formRectangle, menu, this, highScore);
             

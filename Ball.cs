@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/* Program name: Pong NEM
+Project file name: Ball.cs
+Author: Nigel Maynard
+Date: 25/9/22
+Language: C#
+Platform: Microsoft Visual Studio 2022
+Purpose: Class work
+Description: Assessment game: Pong.
+Known Bugs:
+Additional Features:
+*/
+
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Media;
 
 namespace Pong_NEM
@@ -12,29 +19,33 @@ namespace Pong_NEM
     public class Ball
     {
         // Class Variables
-        // Constants
         private const int BALLSIZE = 20;
 
-        // Holds References
         private Rectangle formRectangle, scoreBoardRectangle;
-        private RandomColor randomColor;
         private Brush brush;
         private Score playerScore, cpuScore;
         private Paddle playerPaddle, cpuPaddle;
         private SoundPlayer playerSound = new SoundPlayer(Properties.Resources.fart);
+        private Random random;
 
-        // This class variables
         private int ballSpeedX, ballSpeedY;
         private bool ballXGoUp = true, ballYGoUp = true, isReset = false;
         private int ballPositionX, ballPositionY;
         
         // Gets and Sets
         public Brush GetBrush => brush;
+
+        // Returns a random number
+        private int GetRandomInt => random.Next(11, 20);
+
+        // Returns the current ball rectangle
         public Rectangle GetBall() => new Rectangle(ballPositionX, ballPositionY, BALLSIZE, BALLSIZE);
+
 
         // Class Constructor
         public Ball(Rectangle clientRectangle, Rectangle formRectangle, Rectangle scoreBoardRectangle,
-            Score playerScore, Score cpuScore, Paddle playerPaddle, Paddle cpuPaddle, RandomColor randomColor)
+            Score playerScore, Score cpuScore, Paddle playerPaddle, Paddle cpuPaddle, RandomColor randomColor,
+            Random random)
         {
             this.formRectangle = formRectangle;
             this.scoreBoardRectangle = scoreBoardRectangle;
@@ -42,13 +53,15 @@ namespace Pong_NEM
             this.cpuScore = cpuScore;
             this.playerPaddle = playerPaddle;
             this.cpuPaddle = cpuPaddle;
-            this.randomColor = randomColor;
+            this.random = random;
+
             ballPositionX = clientRectangle.Width / 2;
             ballPositionY = clientRectangle.Height / 2;
-            ballSpeedX = 20;
-            ballSpeedY = 20;
+            ballSpeedX = GetRandomInt;
+            ballSpeedY = GetRandomInt;
             brush = new SolidBrush(randomColor.GetColor());
         }
+
 
         // This will call Methods in ball Class to check and move Ball
         public void UpdateBall()
@@ -62,6 +75,7 @@ namespace Pong_NEM
                 SideBounce();
             }
 
+            // This Will move the player paddle under the conditions
             if (ballPositionX > formRectangle.Width / 2) {
                 if (ballPositionY <= cpuPaddle.GetPaddleRectangle.Bottom)
                 {
@@ -73,7 +87,7 @@ namespace Pong_NEM
             }
         }
 
-        // This Moves the Ball under perfect conditions
+        // This Moves the Ball
         private void MoveBall()
         {
             // X axis
@@ -85,7 +99,7 @@ namespace Pong_NEM
             if (!ballYGoUp) ballPositionY -= ballSpeedY;
         }
 
-        // This will set the correct position of the ball for the bounce.
+        // This will bounce and reassign the ball location for the bounce.
         private void SideBounce()
         {
             // Right side Score and Reset
@@ -96,7 +110,8 @@ namespace Pong_NEM
                 isReset = true;
                 playerScore.CurrentScore++;
                 playerScore.HasScored = true;
-                cpuScore.HasScored = false;
+                ballSpeedX = GetRandomInt;
+
             }
 
             // Left side Score and Reset
@@ -106,8 +121,8 @@ namespace Pong_NEM
                 ballPositionX = formRectangle.Left;
                 isReset = true;
                 cpuScore.CurrentScore++;
-                playerScore.HasScored = true;
-                cpuScore.HasScored = false;
+                cpuScore.HasScored = true;
+                ballSpeedX = GetRandomInt;
             }
 
 
@@ -118,6 +133,7 @@ namespace Pong_NEM
                 {
                     ballXGoUp = false;
                     ballPositionX = cpuPaddle.GetPaddleRectangle.Left - BALLSIZE;
+                    ballSpeedX = GetRandomInt;
                     Console.Beep(4000, 200);
                 }
             }
@@ -129,6 +145,7 @@ namespace Pong_NEM
                 {
                     ballXGoUp = true;
                     ballPositionX = playerPaddle.GetPaddleRectangle.Right;
+                    ballSpeedX = GetRandomInt;
                     Console.Beep(4000, 200);
                 }
             }
@@ -139,6 +156,7 @@ namespace Pong_NEM
             {
                 ballYGoUp = false;
                 ballPositionY = formRectangle.Bottom - BALLSIZE;
+                ballSpeedY = GetRandomInt;
                 Console.Beep();
             }
             // Bottom Bounce
@@ -146,6 +164,7 @@ namespace Pong_NEM
             {
                 ballYGoUp = true;
                 ballPositionY = scoreBoardRectangle.Bottom;
+                ballSpeedY = GetRandomInt;
                 Console.Beep();
             }
         }
@@ -157,7 +176,6 @@ namespace Pong_NEM
             ballPositionY = formRectangle.Height /2;
             isReset = false;
             playerSound.Play();
-
         }
     }
 }

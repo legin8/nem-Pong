@@ -11,11 +11,7 @@ Additional Features:
 */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pong_NEM
 {
@@ -23,11 +19,12 @@ namespace Pong_NEM
     {
         // Class Variables
         private const int MAXSCORELIST = 5;
+        private Score playerScore, cpuScore;
         private string[] highScoreArr = new string[5];
         private bool winnerIsPlayer;
-        private Score playerScore, cpuScore;
 
         public string[] HighScoreArr => highScoreArr;
+
 
         // Class Constructor
         public HighScore(Score playerScore, Score cpuScore)
@@ -36,6 +33,8 @@ namespace Pong_NEM
             this.cpuScore = cpuScore;
         }
 
+
+        // This fills the array form the file
         public void FillArrayFromFile()
         {
             StreamReader sr = new StreamReader(@"../../HighScores.txt");
@@ -51,6 +50,7 @@ namespace Pong_NEM
             sr.Close();
         }
 
+        // This saves the array to a file
         public void SaveToTXTFile()
         {
             StreamWriter sr = new StreamWriter(@"../../HighScores.txt");
@@ -62,6 +62,7 @@ namespace Pong_NEM
             sr.Close();
         }
 
+        // This sets the winner and calls the other methods
         public void WhoWon(bool playerWin)
         {
             winnerIsPlayer = playerWin;
@@ -69,15 +70,11 @@ namespace Pong_NEM
             SaveToTXTFile();
         }
 
-
+        // This creates a new string for the current finished game
         private string makeNewHighScore()
         {
             string winnerName = winnerIsPlayer ? playerScore.GetName : cpuScore.GetName;
-            Console.WriteLine($"{playerScore.GetName}: {playerScore.GetScore} || {cpuScore.GetName}: {cpuScore.GetScore} || Winner is {winnerName}");
             return $"{playerScore.GetName}: {playerScore.GetScore} || {cpuScore.GetName}: {cpuScore.GetScore} || Winner is {winnerName}";
-            
         }
-
-
     }
 }
